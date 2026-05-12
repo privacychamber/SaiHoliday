@@ -1,0 +1,100 @@
+.section {
+  padding-block: var(--section-py);
+  background: var(--linen-dark);
+}
+.header { margin-bottom: 3rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 1.25rem;
+}
+
+/* Span first card wide */
+.block:first-child { grid-column: span 2; }
+
+.block {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+.block:first-child { aspect-ratio: 16/9; }
+
+.blockImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s var(--ease-smooth);
+}
+.block:hover .blockImg { transform: scale(1.06); }
+
+.blockOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.2) 60%, transparent 100%);
+  transition: background var(--t-med);
+}
+.block:hover .blockOverlay {
+  background: linear-gradient(to top, rgba(10,22,40,0.92) 0%, rgba(10,22,40,0.4) 70%, transparent 100%);
+  box-shadow: inset 0 0 0 2px rgba(240,165,0,0.5);
+  border-radius: 20px;
+}
+
+.blockContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.blockIcon { font-size: 1.6rem; }
+
+.blockTitle {
+  font-family: var(--font-playfair);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.blockDesc {
+  font-family: var(--font-inter);
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.7);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-smooth), opacity 0.4s;
+  opacity: 0;
+}
+.block:hover .blockDesc {
+  max-height: 3rem;
+  opacity: 1;
+}
+
+.blockCta {
+  font-size: 0.78rem;
+  padding: 0.5rem 1.2rem;
+  align-self: flex-start;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s var(--ease-smooth), transform 0.35s var(--ease-smooth);
+}
+.block:hover .blockCta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .block:first-child { grid-column: span 2; }
+}
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+  .block:first-child { grid-column: span 1; }
+}

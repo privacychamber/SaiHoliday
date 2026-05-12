@@ -1,0 +1,48 @@
+.section {
+  padding-block: var(--section-py);
+  background: var(--linen);
+  overflow-x: hidden;
+}
+
+.header { margin-bottom: 2.5rem; }
+
+/* International dark background header */
+.intlHeader {
+  margin-top: 4rem;
+  padding: 3rem 0 0;
+  background: var(--sapphire);
+  border-radius: 24px 24px 0 0;
+}
+
+/* The international section wraps everything in sapphire */
+.intlPanel {
+  background: var(--sapphire);
+  border-radius: 24px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  margin-top: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.viewAll {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 1200px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .intlPanel { border-radius: 16px; padding: 1.5rem; }
+}
+@media (max-width: 540px) {
+  .grid { grid-template-columns: 1fr; }
+  .intlPanel { border-radius: 12px; padding: 1.25rem 1rem; margin-top: 2.5rem; }
+}

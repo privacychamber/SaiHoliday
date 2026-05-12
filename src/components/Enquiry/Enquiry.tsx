@@ -1,0 +1,114 @@
+'use client';
+import styles from './Enquiry.module.css';
+
+export default function Enquiry() {
+  return (
+    <section className={styles.section} id="contact">
+      <div className={styles.bgOverlay} />
+      <div className={`container ${styles.inner}`}>
+        {/* Text Side */}
+        <div className={styles.textSide}>
+          <span className="section-label" style={{ color: 'var(--gold)' }}>✦ Let&apos;s Plan Together</span>
+          <h2 className="section-title section-title-light">
+            Your Next Journey<br />Starts Here.
+          </h2>
+          <p className="section-sub section-sub-light">
+            Tell us where you want to go — we&apos;ll handle everything else.
+            Personalized. Premium. Perfectly planned.
+          </p>
+
+          <div className={styles.contactInfo}>
+            <a href="tel:+91XXXXXXXXXX" className={styles.infoItem}>
+              <span className={styles.infoIcon}>📞</span>
+              <div>
+                <strong>Call / WhatsApp</strong>
+                <span>+91 XXXXX XXXXX</span>
+              </div>
+            </a>
+            <a href="mailto:info@saiholiday.in" className={styles.infoItem}>
+              <span className={styles.infoIcon}>✉️</span>
+              <div>
+                <strong>Email Us</strong>
+                <span>info@saiholiday.in</span>
+              </div>
+            </a>
+            <div className={styles.infoItem}>
+              <span className={styles.infoIcon}>🕐</span>
+              <div>
+                <strong>Office Hours</strong>
+                <span>Mon–Sat, 9 AM – 8 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.ctaBtns}>
+            <a
+              href="https://wa.me/91XXXXXXXXXX?text=Hi Sai Holiday, I want to enquire about a travel package."
+              target="_blank" rel="noreferrer"
+              className="btn btn-primary"
+            >
+              💬 WhatsApp Now
+            </a>
+            <a href="tel:+91XXXXXXXXXX" className="btn btn-outline">📞 Call Our Experts</a>
+          </div>
+        </div>
+
+        {/* Form Side */}
+        <div className={`glass ${styles.formCard}`}>
+          <h3 className={styles.formTitle}>Get a Free Quote</h3>
+          <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+            <div className={styles.row}>
+              <div className={styles.field}>
+                <label htmlFor="eq-name">Full Name *</label>
+                <input id="eq-name" type="text" placeholder="Your full name" required />
+              </div>
+              <div className={styles.field}>
+                <label htmlFor="eq-phone">WhatsApp Number *</label>
+                <input id="eq-phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+              </div>
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="eq-email">Email Address</label>
+              <input id="eq-email" type="email" placeholder="you@example.com" />
+            </div>
+            <div className={styles.row}>
+              <div className={styles.field}>
+                <label htmlFor="eq-dest">Destination Interest *</label>
+                <select id="eq-dest" required>
+                  <option value="">Select…</option>
+                  <option>Domestic Escape</option>
+                  <option>International Trip</option>
+                  <option>Honeymoon Package</option>
+                  <option>Family Tour</option>
+                  <option>Group Travel</option>
+                  <option>Flight / Train Booking</option>
+                </select>
+              </div>
+              <div className={styles.field}>
+                <label htmlFor="eq-date">Travel Date (approx)</label>
+                <input id="eq-date" type="month" />
+              </div>
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="eq-budget">Budget Range</label>
+              <select id="eq-budget">
+                <option value="">Select budget…</option>
+                <option>Under ₹20,000</option>
+                <option>₹20,000 – ₹50,000</option>
+                <option>₹50,000 – ₹1,00,000</option>
+                <option>Above ₹1,00,000</option>
+              </select>
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="eq-msg">Message / Special Requests</label>
+              <textarea id="eq-msg" rows={3} placeholder="Tell us about your dream trip…"></textarea>
+            </div>
+            <button type="submit" className={`btn btn-primary ${styles.submitBtn}`}>
+              Send My Enquiry →
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
