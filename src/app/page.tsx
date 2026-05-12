@@ -1,6 +1,7 @@
 'use client';
 import Navbar from '@/components/Navbar/Navbar';
 import Hero from '@/components/Hero/Hero';
+import FlightSearch from '@/components/FlightSearch/FlightSearch';
 import Stats from '@/components/Stats/Stats';
 import Packages from '@/components/Packages/Packages';
 import Experiences from '@/components/Experiences/Experiences';
@@ -16,6 +17,21 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+
+        {/* Flight Search Strip */}
+        <section style={{ background: 'var(--linen)', padding: '2.5rem 0' }}>
+          <div className="container">
+            <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+              <span className="section-label">✦ Quick Flight Search</span>
+              <h2 className="section-title" style={{ marginTop: '0.5rem', marginBottom: '0' }}>Book Flights Instantly</h2>
+            </div>
+            <FlightSearch compact />
+            <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>
+              <a href="/flight" className="btn btn-ghost-gold" style={{ fontSize: '0.85rem' }}>View Full Flight Booking Page →</a>
+            </div>
+          </div>
+        </section>
+
         <Stats />
         <Packages />
         <Experiences />

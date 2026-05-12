@@ -1,0 +1,174 @@
+.hero {
+  position: relative;
+  min-height: 380px;
+  background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1920&q=70');
+  background-size: cover;
+  background-position: center 40%;
+  display: flex;
+  align-items: flex-end;
+}
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,22,40,0.6) 0%, rgba(10,22,40,0.85) 100%);
+}
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding-block: 5rem 3rem;
+  color: var(--white);
+}
+.heroTitle {
+  font-family: var(--font-playfair);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+  margin-block: 0.75rem;
+}
+.heroSub {
+  font-family: var(--font-inter);
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* Search section — overlaps hero */
+.searchSection {
+  padding-block: 2.5rem 3rem;
+  background: var(--linen);
+  margin-top: -60px;
+  padding-top: 0;
+}
+.searchSection .container {
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+}
+
+/* Popular Routes */
+.routesSection {
+  padding-block: var(--section-py);
+  background: var(--white);
+}
+.routesHeader { margin-bottom: 2.5rem; }
+
+.routesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.routeCard {
+  background: var(--white);
+  border: 2px solid var(--linen-dark);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: border-color var(--t-med), box-shadow var(--t-med), transform var(--t-med);
+}
+.routeCard:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+.routePath { display: flex; align-items: center; gap: 0.75rem; }
+.city {
+  font-family: var(--font-dm);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--sapphire);
+}
+.arrow { color: var(--gold); font-size: 1rem; }
+.routeCode {
+  font-family: var(--font-inter);
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.routePrice { display: flex; flex-direction: column; gap: 0.1rem; }
+.routePrice span {
+  font-family: var(--font-inter);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.routePrice strong {
+  font-family: var(--font-playfair);
+  font-size: 1.4rem;
+  color: var(--sapphire);
+  font-weight: 700;
+}
+
+/* Features */
+.featuresSection {
+  padding-block: var(--section-py);
+  background: var(--linen);
+}
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.featureCard {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--t-med);
+}
+.featureCard:hover { transform: translateY(-4px); }
+.featureIcon { font-size: 2rem; }
+.featureCard h3 {
+  font-family: var(--font-dm);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.featureCard p {
+  font-family: var(--font-inter);
+  font-size: 0.87rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* CTA Strip */
+.ctaStrip {
+  background: var(--sapphire);
+  padding-block: 3rem;
+}
+.ctaInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.ctaInner h2 {
+  font-family: var(--font-playfair);
+  font-size: 1.75rem;
+  color: var(--white);
+  font-weight: 700;
+}
+.ctaInner p {
+  font-family: var(--font-inter);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.35rem;
+}
+.ctaBtns { display: flex; gap: 1rem; flex-wrap: wrap; flex-shrink: 0; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .routesGrid { grid-template-columns: repeat(2, 1fr); }
+  .featuresGrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .routesGrid { grid-template-columns: 1fr; }
+  .featuresGrid { grid-template-columns: 1fr; }
+  .ctaInner { flex-direction: column; text-align: center; }
+}
