@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Clock, Calendar, Phone, MessageSquare, Loader2, ChevronRight, Star } from 'lucide-react';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
+import { allPackages } from '@/data/packages';
 import styles from './Itinerary.module.css';
 
 function ItineraryContent() {
@@ -16,10 +17,11 @@ function ItineraryContent() {
   useEffect(() => {
     if (!id) return;
     
-    // Fetch package details from the PHP API
-    fetch(`/php-backend/api/packages.php?id=${id}`)
-      .then(res => res.json())
-      .then(data => {
+    const fetchPackage = async () => {
+      try {
+        const res = await fetch(`/php-backend/api/packages.php?id=${id}`);
+        const data = await res.json();
+        
         if (data && !data.error) {
           // Parse itinerary if it's a string
           if (typeof data.itinerary === 'string' && data.itinerary.trim().startsWith('[')) {
@@ -30,13 +32,30 @@ function ItineraryContent() {
             }
           }
           setPkg(data);
+          setLoading(false);
+          return;
         }
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setLoading(false);
-      });
+      } catch (err) {
+        console.warn('API fetch failed, falling back to static data');
+      }
+
+      // Fallback to static data
+      const staticPkg = allPackages.find(p => String(p.id) === String(id));
+      if (staticPkg) {
+        const data = { ...staticPkg };
+        if (typeof data.itinerary === 'string' && data.itinerary.trim().startsWith('[')) {
+          try {
+            data.itineraryData = JSON.parse(data.itinerary);
+          } catch (e) {
+            data.itineraryData = null;
+          }
+        }
+        setPkg(data);
+      }
+      setLoading(false);
+    };
+
+    fetchPackage();
   }, [id]);
 
   if (loading) {
