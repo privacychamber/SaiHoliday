@@ -56,7 +56,38 @@ export default function Enquiry() {
         {/* Form Side */}
         <div className={`glass ${styles.formCard}`}>
           <h3 className={styles.formTitle}>Get a Free Quote</h3>
-          <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+          <form className={styles.form} onSubmit={async (e) => {
+            e.preventDefault();
+            const btn = e.currentTarget.querySelector('button');
+            if (btn) btn.disabled = true;
+            
+            const formData = {
+              name: (document.getElementById('eq-name') as HTMLInputElement).value,
+              phone: (document.getElementById('eq-phone') as HTMLInputElement).value,
+              email: (document.getElementById('eq-email') as HTMLInputElement).value,
+              destination: (document.getElementById('eq-dest') as HTMLSelectElement).value,
+              travel_date: (document.getElementById('eq-date') as HTMLInputElement).value,
+              budget: (document.getElementById('eq-budget') as HTMLSelectElement).value,
+              message: (document.getElementById('eq-msg') as HTMLTextAreaElement).value,
+              type: 'general'
+            };
+
+            try {
+              const res = await fetch('/php-backend/api/enquiry.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+              });
+              if (res.ok) {
+                alert('✅ Enquiry sent successfully! Our experts will contact you soon.');
+                (e.target as HTMLFormElement).reset();
+              }
+            } catch (err) {
+              console.error(err);
+            } finally {
+              if (btn) btn.disabled = false;
+            }
+          }}>
             <div className={styles.row}>
               <div className={styles.field}>
                 <label htmlFor="eq-name">Full Name *</label>
@@ -82,6 +113,7 @@ export default function Enquiry() {
                   <option>Family Tour</option>
                   <option>Group Travel</option>
                   <option>Flight / Train Booking</option>
+                  <option>Villa / Staycation</option>
                 </select>
               </div>
               <div className={styles.field}>

@@ -23,14 +23,32 @@ function HeroForm() {
   const [date, setDate] = useState('');
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) return;
+    
+    setSent(true);
+    
+    // Save to DB
+    try {
+      await fetch('/php-backend/api/enquiry.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, phone, destination: dest, travel_date: date,
+          type: 'consultancy',
+          message: 'Villa Consultancy Request from Hero Banner'
+        })
+      });
+    } catch (err) {
+      console.error('Failed to save lead', err);
+    }
+
     const msg = encodeURIComponent(
-      `Hi Sai Holiday! 🙏\n\nName: ${name}\nPhone: ${phone}\nDestination: ${dest || 'Not specified'}\nTravel Date: ${date || 'Flexible'}\n\nI'd like a free quote for my trip.`
+      `Hi Sai Holiday! 🙏\n\nI'm interested in Villa Consultancy/Staycations.\nName: ${name}\nPhone: ${phone}\nDestination: ${dest || 'Not specified'}\nTravel Date: ${date || 'Flexible'}`
     );
     window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
-    setSent(true);
+    
     setTimeout(() => setSent(false), 4000);
   };
 
@@ -118,7 +136,7 @@ export default function Hero() {
             <a href="#packages" className="btn btn-primary">
               <Star size={18} fill="currentColor" /> Start Exploring
             </a>
-            <Link href="/consultancy" className="btn btn-outline" style={{ borderColor: 'var(--gold)', color: 'var(--gold)' }}>
+            <Link href="/consultancy/" className="btn btn-outline" style={{ borderColor: 'var(--gold)', color: 'var(--gold)' }}>
               <Home size={18} /> Villa Consultancy
             </Link>
             <a href={`https://wa.me/${WA_NUMBER}?text=Hi Sai Holiday, I want to book a trip!`}
