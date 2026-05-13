@@ -43,6 +43,30 @@ function getDB() {
         itinerary TEXT, 
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )");
+
+    // Seed initial packages if table is empty
+    $count = $db->query("SELECT COUNT(*) FROM packages")->fetchColumn();
+    if ($count == 0) {
+        $initial = [
+            ['Paradise in Kashmir', 'Srinagar, J&K', '6D/5N', '₹24,999', 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80', 'domestic', '[{"day": 1, "title": "Arrival", "activities": "Transfer to houseboat..."}, {"day": 2, "title": "Srinagar", "activities": "Mughal Gardens visit..."}]'],
+            ['Enchanting Bali', 'Bali, Indonesia', '7D/6N', '₹54,999', 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80', 'international', '[{"day": 1, "title": "Arrival", "activities": "Ubud transfer..."}, {"day": 2, "title": "Rice Terraces", "activities": "Nature walk..."}]'],
+            ['Divine Kedarnath Yatra', 'Uttarakhand', '5D/4N', '₹18,999', 'https://images.unsplash.com/photo-1608555855762-2b657eb1278b?auto=format&fit=crop&w=800&q=80', 'domestic', '[{"day": 1, "title": "Haridwar", "activities": "Ganga Aarti..."}, {"day": 2, "title": "Guptkashi", "activities": "Drive uphill..."}]'],
+            ['Royal Rajasthan Tour', 'Jaisalmer, Jodhpur', '7D/6N', '₹21,999', 'https://images.unsplash.com/photo-1477587458883-47145ed94397?auto=format&fit=crop&w=800&q=80', 'domestic', '[{"day": 1, "title": "Jaipur", "activities": "Amer Fort..."}, {"day": 2, "title": "Jodhpur", "activities": "Mehrangarh Fort..."}]'],
+            ['Manali Snow Adventure', 'Himachal Pradesh', '5D/4N', '₹16,999', 'https://images.unsplash.com/photo-1585516482984-d1a32eb4a1c5?auto=format&fit=crop&w=800&q=80', 'domestic', '[{"day": 1, "title": "Arrival", "activities": "Check-in..."}, {"day": 2, "title": "Solang Valley", "activities": "Snow sports..."}]'],
+            ['Backwaters of Kerala', 'Alleppey, Munnar', '6D/5N', '₹22,999', 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80', 'domestic', '[{"day": 1, "title": "Munnar", "activities": "Tea gardens..."}, {"day": 2, "title": "Alleppey", "activities": "Houseboat stay..."}]'],
+            ['Goa Sun & Beaches', 'North & South Goa', '5D/4N', '₹14,999', 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80', 'domestic', '[{"day": 1, "title": "Calangute", "activities": "Beach time..."}, {"day": 2, "title": "Old Goa", "activities": "Churches..."}]'],
+            ['Glamorous Dubai', 'UAE', '5D/4N', '₹44,999', 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80', 'international', '[{"day": 1, "title": "Dubai Mall", "activities": "Burj Khalifa..."}, {"day": 2, "title": "Desert Safari", "activities": "Dune bashing..."}]'],
+            ['Maldives Serenity', 'North Malé Atoll', '5D/4N', '₹79,999', 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80', 'international', '[{"day": 1, "title": "Male", "activities": "Speedboat transfer..."}, {"day": 2, "title": "Resort", "activities": "Water sports..."}]'],
+            ['Swiss Alps Explorer', 'Zurich, Interlaken', '8D/7N', '₹1,29,999', 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80', 'international', '[{"day": 1, "title": "Zurich", "activities": "Old town..."}, {"day": 2, "title": "Interlaken", "activities": "Mountain views..."}]'],
+            ['Paris — City of Love', 'France', '7D/6N', '₹99,999', 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80', 'international', '[{"day": 1, "title": "Eiffel Tower", "activities": "Evening cruise..."}, {"day": 2, "title": "Louvre", "activities": "Art tour..."}]'],
+            ['Singapore Discovery', 'Singapore', '5D/4N', '₹59,999', 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80', 'international', '[{"day": 1, "title": "Sentosa", "activities": "Cable car..."}, {"day": 2, "title": "Marina Bay", "activities": "Gardens by the bay..."}]']
+        ];
+        $stmt = $db->prepare("INSERT INTO packages (title, location, duration, price, image, category, itinerary) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        foreach ($initial as $p) {
+            $stmt->execute($p);
+        }
+    }
+
     return $db;
 }
 
