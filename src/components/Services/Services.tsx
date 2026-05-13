@@ -1,4 +1,6 @@
 'use client';
+import { useState } from 'react';
+import ServiceModal from '@/components/ServiceModal/ServiceModal';
 import styles from './Services.module.css';
 
 const services = [
@@ -10,6 +12,14 @@ const services = [
 ];
 
 export default function Services() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeService, setActiveService] = useState('');
+
+  const openEnquiry = (title: string) => {
+    setActiveService(title);
+    setModalOpen(true);
+  };
+
   return (
     <section className={styles.section} id="services">
       <div className="container">
@@ -27,11 +37,22 @@ export default function Services() {
               <span className={styles.icon}>{s.icon}</span>
               <h3 className={styles.title}>{s.title}</h3>
               <p className={styles.desc}>{s.desc}</p>
-              <button className={`btn btn-ghost-gold ${styles.cta}`}>Learn More →</button>
+              <button 
+                className={`btn btn-ghost-gold ${styles.cta}`}
+                onClick={() => openEnquiry(s.title)}
+              >
+                Learn More →
+              </button>
             </div>
           ))}
         </div>
       </div>
+
+      <ServiceModal 
+        isOpen={modalOpen} 
+        onClose={() => setModalOpen(false)} 
+        service={activeService} 
+      />
     </section>
   );
 }

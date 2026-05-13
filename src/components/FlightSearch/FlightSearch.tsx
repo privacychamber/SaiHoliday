@@ -35,16 +35,32 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
     setTo(from);
   };
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSearching(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSearching(false);
+    const data = {
+      name: (e.currentTarget as any).querySelector('input[type="tel"]')?.value || 'Flight Enquiry',
+      phone: (e.currentTarget as any).querySelector('input[type="tel"]')?.value || '',
+      destination: `${from} to ${to}`,
+      travel_date: departure,
+      type: 'flight',
+      message: `Trip: ${tripType}, Class: ${cabinClass}, Pax: ${totalPax}`
+    };
+
+    try {
+      await fetch('/php-backend/api/enquiry.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 5000);
-    }, 2000);
+    } catch (err) {
+      console.error('Flight enquiry failed', err);
+    } finally {
+      setIsSearching(false);
+    }
   };
 
   return (

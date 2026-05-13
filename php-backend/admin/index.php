@@ -65,7 +65,16 @@ if ($logged_in && isset($_GET['export'])) {
 
 $tab = $_GET['tab'] ?? 'dashboard';
 $leads = [];
-$stats = ['total' => 0, 'today' => 0, 'flights' => 0, 'general' => 0];
+$stats = [
+    'total' => 0, 
+    'today' => 0, 
+    'flight' => 0, 
+    'railway' => 0, 
+    'hotel' => 0, 
+    'visa' => 0, 
+    'package' => 0,
+    'general' => 0
+];
 
 if ($logged_in) {
     $db = getDB();
@@ -74,7 +83,13 @@ if ($logged_in) {
     $today = date('Y-m-d');
     foreach ($leads as $l) {
         if (substr($l['created_at'], 0, 10) === $today) $stats['today']++;
-        if ($l['type'] === 'flight') $stats['flights']++;
+        
+        $type = $l['type'];
+        if (strpos($type, 'flight') !== false) $stats['flight']++;
+        elseif (strpos($type, 'railway') !== false) $stats['railway']++;
+        elseif (strpos($type, 'hotel') !== false) $stats['hotel']++;
+        elseif (strpos($type, 'visa') !== false) $stats['visa']++;
+        elseif (strpos($type, 'package') !== false) $stats['package']++;
         else $stats['general']++;
     }
 }
@@ -233,18 +248,24 @@ if ($logged_in) {
     </a>
     <a href="?tab=leads" class="nav-link <?= $tab==='leads'?'active':'' ?>">
       <span class="icon">📋</span> All Enquiries
-      <?php if($stats['total']>0): ?>
-        <span style="margin-left:auto;background:var(--gold);color:var(--sapphire);
-          border-radius:20px;padding:0.1rem 0.5rem;font-size:0.7rem;font-weight:700">
-          <?= $stats['total'] ?>
-        </span>
-      <?php endif; ?>
     </a>
-    <a href="?tab=flights" class="nav-link <?= $tab==='flights'?'active':'' ?>">
-      <span class="icon">✈️</span> Flight Enquiries
+    <a href="?tab=flight" class="nav-link <?= $tab==='flight'?'active':'' ?>">
+      <span class="icon">✈️</span> Flights (<?= $stats['flight'] ?>)
     </a>
-    <a href="?tab=general" class="nav-link <?= $tab==='general'?'active':'' ?>">
-      <span class="icon">🌍</span> Tour Enquiries
+    <a href="?tab=railway" class="nav-link <?= $tab==='railway'?'active':'' ?>">
+      <span class="icon">🚂</span> Railway (<?= $stats['railway'] ?>)
+    </a>
+    <a href="?tab=hotel" class="nav-link <?= $tab==='hotel'?'active':'' ?>">
+      <span class="icon">🏨</span> Hotels (<?= $stats['hotel'] ?>)
+    </a>
+    <a href="?tab=visa" class="nav-link <?= $tab==='visa'?'active':'' ?>">
+      <span class="icon">🛂</span> Visa (<?= $stats['visa'] ?>)
+    </a>
+    <a href="?tab=package" class="nav-link <?= $tab==='package'?'active':'' ?>">
+      <span class="icon">🗺️</span> Packages (<?= $stats['package'] ?>)
+    </a>
+    <a href="?tab=consultancy" class="nav-link <?= $tab==='consultancy'?'active':'' ?>">
+      <span class="icon">✦</span> Consultancy
     </a>
     <a href="?tab=export" class="nav-link <?= $tab==='export'?'active':'' ?>">
       <span class="icon">⬇️</span> Export Data
@@ -281,13 +302,35 @@ if ($logged_in) {
       </div>
       <div class="stat-card">
         <div class="ico">✈️</div>
-        <div class="num"><?= $stats['flights'] ?></div>
-        <div class="lbl">Flight Enquiries</div>
+        <div class="num"><?= $stats['flight'] ?></div>
+        <div class="lbl">Flights</div>
+      </div>
+      <div class="stat-card">
+        <div class="ico">🚂</div>
+        <div class="num"><?= $stats['railway'] ?></div>
+        <div class="lbl">Railway</div>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="ico">🏨</div>
+        <div class="num"><?= $stats['hotel'] ?></div>
+        <div class="lbl">Hotels</div>
+      </div>
+      <div class="stat-card">
+        <div class="ico">🛂</div>
+        <div class="num"><?= $stats['visa'] ?></div>
+        <div class="lbl">Visa</div>
+      </div>
+      <div class="stat-card">
+        <div class="ico">🗺️</div>
+        <div class="num"><?= $stats['package'] ?></div>
+        <div class="lbl">Packages</div>
       </div>
       <div class="stat-card">
         <div class="ico">🌍</div>
         <div class="num"><?= $stats['general'] ?></div>
-        <div class="lbl">Tour Enquiries</div>
+        <div class="lbl">Others</div>
       </div>
     </div>
     <!-- Recent leads -->
@@ -323,12 +366,22 @@ if ($logged_in) {
     <!-- LEADS TABLE -->
     <?php
       $filtered = $leads;
-      if($tab === 'flights') $filtered = array_filter($leads, fn($l)=>$l['type']==='flight');
-      if($tab === 'general') $filtered = array_filter($leads, fn($l)=>$l['type']!=='flight');
-      $titles = ['leads'=>'All Enquiries','flights'=>'Flight Enquiries','general'=>'Tour Enquiries'];
+      if($tab !== 'leads' && $tab !== 'dashboard' && $tab !== 'export') {
+          $filtered = array_filter($leads, fn($l) => strpos($l['type'], $tab) !== false);
+      }
+      $titles = [
+          'leads'=>'All Enquiries',
+          'flight'=>'Flight Enquiries',
+          'railway'=>'Railway Enquiries',
+          'hotel'=>'Hotel Reservations',
+          'visa'=>'Visa Assistance',
+          'package'=>'Package Enquiries',
+          'consultancy'=>'Consultancy Leads'
+      ];
+      $icons = ['leads'=>'📋','flight'=>'✈️','railway'=>'🚂','hotel'=>'🏨','visa'=>'🛂','package'=>'🗺️','consultancy'=>'✦'];
     ?>
     <div class="topbar">
-      <h1><?= ['leads'=>'📋','flights'=>'✈️','general'=>'🌍'][$tab] ?> <?= $titles[$tab] ?></h1>
+      <h1><?= $icons[$tab] ?? '📋' ?> <?= $titles[$tab] ?? 'Enquiries' ?></h1>
       <div class="topbar-right">
         <a href="?export=1" class="btn btn-export">⬇️ Export CSV</a>
       </div>
