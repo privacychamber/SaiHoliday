@@ -6,21 +6,21 @@ import PackageCard from '@/components/PackageCard/PackageCard';
 import styles from './Packages.module.css';
 
 const domestic = [
-  { title: 'Paradise in Kashmir', location: 'Srinagar, J&K', duration: '6D/5N', price: '₹24,999', rating: 5, badge: 'Best Seller', category: 'domestic', image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80' },
-  { title: 'Divine Kedarnath Yatra', location: 'Uttarakhand', duration: '5D/4N', price: '₹18,999', rating: 5, badge: 'Trending', badgeType: 'amber' as const, category: 'domestic', image: 'https://images.unsplash.com/photo-1608555855762-2b657eb1278b?w=600&q=80' },
-  { title: 'Royal Rajasthan Tour', location: 'Jaisalmer, Jodhpur', duration: '7D/6N', price: '₹21,999', rating: 4, category: 'domestic', image: 'https://images.unsplash.com/photo-1477587458883-47145ed94397?w=600&q=80' },
-  { title: 'Manali Snow Adventure', location: 'Himachal Pradesh', duration: '5D/4N', price: '₹16,999', rating: 5, badge: 'Best Seller', category: 'domestic', image: 'https://images.unsplash.com/photo-1585516482984-d1a32eb4a1c5?w=600&q=80' },
-  { title: 'Backwaters of Kerala', location: 'Alleppey, Munnar', duration: '6D/5N', price: '₹22,999', rating: 5, category: 'domestic', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80' },
-  { title: 'Goa Sun & Beaches', location: 'North & South Goa', duration: '5D/4N', price: '₹14,999', rating: 5, badge: 'Popular', category: 'domestic', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80' },
+  { title: 'Paradise in Kashmir', location: 'Srinagar, J&K', duration: '6D/5N', price: '₹24,999', rating: 5, badge: 'Best Seller', category: 'domestic', image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Divine Kedarnath Yatra', location: 'Uttarakhand', duration: '5D/4N', price: '₹18,999', rating: 5, badge: 'Trending', badgeType: 'amber' as const, category: 'domestic', image: 'https://images.unsplash.com/photo-1608555855762-2b657eb1278b?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Royal Rajasthan Tour', location: 'Jaisalmer, Jodhpur', duration: '7D/6N', price: '₹21,999', rating: 4, category: 'domestic', image: 'https://images.unsplash.com/photo-1477587458883-47145ed94397?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Manali Snow Adventure', location: 'Himachal Pradesh', duration: '5D/4N', price: '₹16,999', rating: 5, badge: 'Best Seller', category: 'domestic', image: 'https://images.unsplash.com/photo-1585516482984-d1a32eb4a1c5?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Backwaters of Kerala', location: 'Alleppey, Munnar', duration: '6D/5N', price: '₹22,999', rating: 5, category: 'domestic', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Goa Sun & Beaches', location: 'North & South Goa', duration: '5D/4N', price: '₹14,999', rating: 5, badge: 'Popular', category: 'domestic', image: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80' },
 ];
 
 const international = [
-  { title: 'Enchanting Bali', location: 'Bali, Indonesia', duration: '7D/6N', price: '₹54,999', rating: 5, badge: 'Best Seller', category: 'international', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80' },
-  { title: 'Glamorous Dubai', location: 'UAE', duration: '5D/4N', price: '₹44,999', rating: 5, badge: 'Visa Incl.', badgeType: 'amber' as const, category: 'international', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80' },
-  { title: 'Maldives Serenity', location: 'North Malé Atoll', duration: '5D/4N', price: '₹79,999', rating: 5, badge: '🏝️ Luxury', category: 'international', image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80' },
-  { title: 'Swiss Alps Explorer', location: 'Zurich, Interlaken', duration: '8D/7N', price: '₹1,29,999', rating: 5, category: 'international', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80' },
-  { title: 'Paris — City of Love', location: 'France', duration: '7D/6N', price: '₹99,999', rating: 5, badge: 'Romantic', badgeType: 'amber' as const, category: 'international', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80' },
-  { title: 'Singapore Discovery', location: 'Singapore', duration: '5D/4N', price: '₹59,999', rating: 4, category: 'international', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80' },
+  { title: 'Enchanting Bali', location: 'Bali, Indonesia', duration: '7D/6N', price: '₹54,999', rating: 5, badge: 'Best Seller', category: 'international', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Glamorous Dubai', location: 'UAE', duration: '5D/4N', price: '₹44,999', rating: 5, badge: 'Visa Incl.', badgeType: 'amber' as const, category: 'international', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Maldives Serenity', location: 'North Malé Atoll', duration: '5D/4N', price: '₹79,999', rating: 5, badge: '🏝️ Luxury', category: 'international', image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Swiss Alps Explorer', location: 'Zurich, Interlaken', duration: '8D/7N', price: '₹1,29,999', rating: 5, category: 'international', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Paris — City of Love', location: 'France', duration: '7D/6N', price: '₹99,999', rating: 5, badge: 'Romantic', badgeType: 'amber' as const, category: 'international', image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Singapore Discovery', location: 'Singapore', duration: '5D/4N', price: '₹59,999', rating: 4, category: 'international', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80' },
 ];
 
 const allPackages = [...domestic, ...international];

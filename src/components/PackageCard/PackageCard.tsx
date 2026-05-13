@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { MapPin } from 'lucide-react';
 import styles from './PackageCard.module.css';
 
 const WA = '919999999999'; // ← Replace with real number
@@ -32,7 +33,7 @@ export default function PackageCard({
       </div>
       <div className={styles.body}>
         <div className={styles.meta}>
-          <span className={styles.location}>📍 {location}</span>
+          <span className={styles.location}><MapPin size={14} /> {location}</span>
           <span className={styles.rating}>{'★'.repeat(rating)}{'☆'.repeat(5 - rating)}</span>
         </div>
         <h3 className={styles.title}>{title}</h3>

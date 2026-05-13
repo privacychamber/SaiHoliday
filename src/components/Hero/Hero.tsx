@@ -9,8 +9,11 @@ const WA_NUMBER = '919999999999'; // ← Replace with real number (country code 
 
 const slides = [
   { image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1920&q=85', label: 'Kashmir', tagline: 'Heaven on Earth' },
-  { image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1920&q=85', label: 'Bali', tagline: 'Island of the Gods' },
+  { image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85', label: 'Swiss Alps', tagline: 'Majestic Peaks' },
+  { image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1920&q=85', label: 'Kerala', tagline: 'God\'s Own Country' },
   { image: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=85', label: 'Maldives', tagline: 'A Drop of Paradise' },
+  { image: 'https://images.unsplash.com/photo-1477587458883-47145ed94397?w=1920&q=85', label: 'Rajasthan', tagline: 'Royal Heritage' },
+  { image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&q=85', label: 'Paris', tagline: 'The City of Lights' },
 ];
 
 function HeroForm() {
