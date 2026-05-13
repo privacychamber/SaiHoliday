@@ -1,5 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Phone, MessageSquare, ChevronDown, Star, Users, MapPin, Calendar, Home } from 'lucide-react';
 import styles from './Hero.module.css';
 
 const WA_NUMBER = '919999999999'; // ← Replace with real number (country code + number, no +)
@@ -44,7 +47,7 @@ function HeroForm() {
         <label htmlFor="hero-dest">Destination Interest</label>
         <select id="hero-dest" value={dest} onChange={e => setDest(e.target.value)}>
           <option value="">Select destination…</option>
-          {['Kashmir','Manali','Kedarnath','Kerala','Goa','Rajasthan','Bali','Dubai','Maldives','Switzerland','Paris','Singapore','Thailand'].map(d => (
+          {['Kashmir', 'Manali', 'Kedarnath', 'Kerala', 'Goa', 'Rajasthan', 'Bali', 'Dubai', 'Maldives', 'Switzerland', 'Paris', 'Singapore', 'Thailand'].map(d => (
             <option key={d}>{d}</option>
           ))}
         </select>
@@ -103,11 +106,23 @@ export default function Hero() {
             Handcrafted journeys across India &amp; the world — domestic escapes,
             international adventures, and honeymoon retreats. Trusted by 10,000+ happy travelers.
           </p>
-          <div className={styles.ctas}>
-            <a href="#packages" className="btn btn-primary">✦ Start Exploring</a>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className={styles.ctas}
+          >
+            <a href="#packages" className="btn btn-primary">
+              <Star size={18} fill="currentColor" /> Start Exploring
+            </a>
+            <Link href="/consultancy" className="btn btn-outline" style={{ borderColor: 'var(--gold)', color: 'var(--gold)' }}>
+              <Home size={18} /> Villa Consultancy
+            </Link>
             <a href={`https://wa.me/${WA_NUMBER}?text=Hi Sai Holiday, I want to book a trip!`}
-              target="_blank" rel="noreferrer" className="btn btn-outline">💬 WhatsApp Us</a>
-          </div>
+              target="_blank" rel="noreferrer" className="btn btn-outline">
+              <MessageSquare size={18} /> WhatsApp Us
+            </a>
+          </motion.div>
           <div className={styles.trustRow}>
             <span>★ 4.9/5 Rating</span><span>|</span>
             <span>10,000+ Travelers</span><span>|</span>

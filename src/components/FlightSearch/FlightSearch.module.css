@@ -1,7 +1,7 @@
 .widget {
   background: var(--white);
   border-radius: 20px;
-  box-shadow: 0 8px 40px rgba(10,22,40,0.14);
+  box-shadow: 0 8px 40px rgba(10, 22, 40, 0.14);
   overflow: visible;
   padding: 0;
 }
@@ -12,6 +12,7 @@
   gap: 0;
   border-bottom: 2px solid var(--linen-dark);
 }
+
 .tab {
   flex: 1;
   padding: 1rem 1.5rem;
@@ -26,7 +27,11 @@
   margin-bottom: -2px;
   transition: color var(--t-fast), border-color var(--t-fast);
 }
-.tab:hover { color: var(--sapphire); }
+
+.tab:hover {
+  color: var(--sapphire);
+}
+
 .activeTab {
   color: var(--sapphire);
   border-bottom-color: var(--gold);
@@ -46,6 +51,7 @@
   align-items: flex-end;
   flex-wrap: wrap;
 }
+
 .optionsRow {
   display: flex;
   gap: 0.75rem;
@@ -60,6 +66,7 @@
   flex: 1;
   min-width: 140px;
 }
+
 .field label {
   font-family: var(--font-dm);
   font-size: 0.72rem;
@@ -68,6 +75,7 @@
   text-transform: uppercase;
   letter-spacing: 0.07em;
 }
+
 .field input,
 .field select {
   padding: 0.7rem 0.9rem;
@@ -80,8 +88,11 @@
   outline: none;
   transition: border-color var(--t-fast);
 }
+
 .field input:focus,
-.field select:focus { border-color: var(--sapphire); }
+.field select:focus {
+  border-color: var(--sapphire);
+}
 
 /* Swap button */
 .swapBtn {
@@ -99,6 +110,7 @@
   margin-bottom: 2px;
   transition: background var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
 }
+
 .swapBtn:hover {
   background: var(--sapphire);
   border-color: var(--sapphire);
@@ -120,7 +132,10 @@
   transition: border-color var(--t-fast);
   width: 100%;
 }
-.paxBtn:hover { border-color: var(--sapphire); }
+
+.paxBtn:hover {
+  border-color: var(--sapphire);
+}
 
 /* Passenger dropdown */
 .paxDropdown {
@@ -131,11 +146,12 @@
   background: var(--white);
   border: 1px solid var(--linen-dark);
   border-radius: 14px;
-  box-shadow: 0 12px 40px rgba(10,22,40,0.15);
+  box-shadow: 0 12px 40px rgba(10, 22, 40, 0.15);
   padding: 1rem;
   min-width: 240px;
   margin-top: 0.5rem;
 }
+
 .paxRow {
   display: flex;
   justify-content: space-between;
@@ -143,7 +159,11 @@
   padding: 0.65rem 0;
   border-bottom: 1px solid var(--linen);
 }
-.paxRow:last-of-type { border-bottom: none; }
+
+.paxRow:last-of-type {
+  border-bottom: none;
+}
+
 .paxRow strong {
   display: block;
   font-family: var(--font-dm);
@@ -151,16 +171,19 @@
   font-weight: 700;
   color: var(--ink);
 }
+
 .paxRow span {
   font-family: var(--font-inter);
   font-size: 0.75rem;
   color: var(--muted);
 }
+
 .counter {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
+
 .counter button {
   width: 30px;
   height: 30px;
@@ -175,7 +198,13 @@
   justify-content: center;
   transition: background var(--t-fast);
 }
-.counter button:hover { background: var(--sapphire); color: white; border-color: var(--sapphire); }
+
+.counter button:hover {
+  background: var(--sapphire);
+  color: white;
+  border-color: var(--sapphire);
+}
+
 .counter span {
   font-family: var(--font-dm);
   font-size: 1rem;
@@ -183,6 +212,7 @@
   min-width: 20px;
   text-align: center;
 }
+
 .donePax {
   width: 100%;
   margin-top: 0.75rem;
@@ -227,14 +257,40 @@
 }
 
 /* Compact mode (homepage embed) */
-.compact .form { padding: 1.25rem 1.5rem 0.75rem; }
-.compact .tabs .tab { padding: 0.75rem 1rem; font-size: 0.83rem; }
+.compact .form {
+  padding: 1.25rem 1.5rem 0.75rem;
+}
+
+.compact .tabs .tab {
+  padding: 0.75rem 1rem;
+  font-size: 0.83rem;
+}
 
 @media (max-width: 900px) {
-  .routeRow, .optionsRow { flex-direction: column; }
-  .field { min-width: 100%; }
-  .swapBtn { align-self: center; transform: rotate(90deg); }
-  .swapBtn:hover { transform: rotate(270deg); }
-  .form { padding: 1rem; }
-  .note { padding: 0.75rem 1rem 1rem; }
+
+  .routeRow,
+  .optionsRow {
+    flex-direction: column;
+  }
+
+  .field {
+    min-width: 100%;
+  }
+
+  .swapBtn {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+
+  .swapBtn:hover {
+    transform: rotate(270deg);
+  }
+
+  .form {
+    padding: 1rem;
+  }
+
+  .note {
+    padding: 0.75rem 1rem 1rem;
+  }
 }

@@ -1,5 +1,7 @@
 'use client';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plane, ArrowLeftRight, Calendar, Users, Briefcase, Search, CheckCircle2, Loader2, MapPin, Phone } from 'lucide-react';
 import styles from './FlightSearch.module.css';
 
 type TripType = 'one-way' | 'round-trip' | 'multi-city';
@@ -23,6 +25,7 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
   const [infants, setInfants] = useState(0);
   const [cabinClass, setCabinClass] = useState<CabinClass>('Economy');
   const [showPassengers, setShowPassengers] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const totalPax = adults + children + infants;
@@ -34,13 +37,18 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // In production this POSTs to /api/flight-leads
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setIsSearching(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsSearching(false);
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 5000);
+    }, 2000);
   };
 
   return (
-    <div className={`${styles.widget} ${compact ? styles.compact : ''}`}>
+    <div className={`${styles.widget} ${compact ? styles.compact : ''} glass`}>
       {/* Trip type tabs */}
       <div className={styles.tabs}>
         {(['one-way', 'round-trip', 'multi-city'] as TripType[]).map((t) => (
@@ -50,7 +58,12 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
             onClick={() => setTripType(t)}
             type="button"
           >
-            {t === 'one-way' ? '✈ One Way' : t === 'round-trip' ? '↔ Round Trip' : '⊕ Multi City'}
+            {t === 'one-way' && <Plane size={16} style={{ transform: 'rotate(45deg)' }} />}
+            {t === 'round-trip' && <ArrowLeftRight size={16} />}
+            {t === 'multi-city' && <Search size={16} />}
+            <span style={{ marginLeft: '8px', textTransform: 'capitalize' }}>
+              {t.replace('-', ' ')}
+            </span>
           </button>
         ))}
       </div>
@@ -59,40 +72,43 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
         {/* Route row */}
         <div className={styles.routeRow}>
           <div className={styles.field}>
-            <label>From</label>
-            <input
-              list="airports-from"
-              value={from}
-              onChange={e => setFrom(e.target.value)}
-              placeholder="City or Airport"
-              required
-            />
+            <label><MapPin size={14} /> From</label>
+            <div className={styles.inputWrapper}>
+              <input
+                list="airports-from"
+                value={from}
+                onChange={e => setFrom(e.target.value)}
+                placeholder="Origin City"
+                required
+              />
+            </div>
             <datalist id="airports-from">
               {popularAirports.map(a => <option key={a} value={a} />)}
             </datalist>
           </div>
 
-          <button type="button" className={styles.swapBtn} onClick={handleSwap} title="Swap">
-            ⇄
+          <button type="button" className={styles.swapBtn} onClick={handleSwap} title="Swap Locations">
+            <ArrowLeftRight size={18} />
           </button>
 
           <div className={styles.field}>
-            <label>To</label>
-            <input
-              list="airports-to"
-              value={to}
-              onChange={e => setTo(e.target.value)}
-              placeholder="City or Airport"
-              required
-            />
+            <label><MapPin size={14} /> To</label>
+            <div className={styles.inputWrapper}>
+              <input
+                list="airports-to"
+                value={to}
+                onChange={e => setTo(e.target.value)}
+                placeholder="Destination City"
+                required
+              />
+            </div>
             <datalist id="airports-to">
               {popularAirports.map(a => <option key={a} value={a} />)}
             </datalist>
           </div>
 
-          {/* Dates */}
           <div className={styles.field}>
-            <label>Departure</label>
+            <label><Calendar size={14} /> Departure</label>
             <input
               type="date"
               value={departure}
@@ -104,7 +120,7 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
 
           {tripType === 'round-trip' && (
             <div className={styles.field}>
-              <label>Return</label>
+              <label><Calendar size={14} /> Return</label>
               <input
                 type="date"
                 value={returnDate}
@@ -116,47 +132,52 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
           )}
         </div>
 
-        {/* Second row: passengers + class + search */}
+        {/* Options Row */}
         <div className={styles.optionsRow}>
-          {/* Passengers dropdown */}
           <div className={styles.field} style={{ position: 'relative' }}>
-            <label>Passengers</label>
+            <label><Users size={14} /> Passengers</label>
             <button
               type="button"
               className={styles.paxBtn}
               onClick={() => setShowPassengers(!showPassengers)}
             >
-              👤 {totalPax} Passenger{totalPax !== 1 ? 's' : ''}
+              {totalPax} Passenger{totalPax !== 1 ? 's' : ''}
             </button>
-            {showPassengers && (
-              <div className={styles.paxDropdown}>
-                {[
-                  { label: 'Adults', sub: '12+ years', value: adults, setter: setAdults, min: 1 },
-                  { label: 'Children', sub: '2–12 years', value: children, setter: setChildren, min: 0 },
-                  { label: 'Infants', sub: 'Under 2', value: infants, setter: setInfants, min: 0 },
-                ].map(({ label, sub, value, setter, min }) => (
-                  <div key={label} className={styles.paxRow}>
-                    <div>
-                      <strong>{label}</strong>
-                      <span>{sub}</span>
+            <AnimatePresence>
+              {showPassengers && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className={styles.paxDropdown}
+                >
+                  {[
+                    { label: 'Adults', sub: '12+ years', value: adults, setter: setAdults, min: 1 },
+                    { label: 'Children', sub: '2–12 years', value: children, setter: setChildren, min: 0 },
+                    { label: 'Infants', sub: 'Under 2', value: infants, setter: setInfants, min: 0 },
+                  ].map(({ label, sub, value, setter, min }) => (
+                    <div key={label} className={styles.paxRow}>
+                      <div>
+                        <strong>{label}</strong>
+                        <span>{sub}</span>
+                      </div>
+                      <div className={styles.counter}>
+                        <button type="button" onClick={() => setter(Math.max(min, value - 1))}>−</button>
+                        <span>{value}</span>
+                        <button type="button" onClick={() => setter(value + 1)}>+</button>
+                      </div>
                     </div>
-                    <div className={styles.counter}>
-                      <button type="button" onClick={() => setter(Math.max(min, value - 1))}>−</button>
-                      <span>{value}</span>
-                      <button type="button" onClick={() => setter(value + 1)}>+</button>
-                    </div>
-                  </div>
-                ))}
-                <button type="button" className={styles.donePax} onClick={() => setShowPassengers(false)}>
-                  Done
-                </button>
-              </div>
-            )}
+                  ))}
+                  <button type="button" className={styles.donePax} onClick={() => setShowPassengers(false)}>
+                    Done
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
-          {/* Cabin class */}
           <div className={styles.field}>
-            <label>Cabin Class</label>
+            <label><Briefcase size={14} /> Cabin Class</label>
             <select value={cabinClass} onChange={e => setCabinClass(e.target.value as CabinClass)}>
               {(['Economy', 'Premium Economy', 'Business', 'First'] as CabinClass[]).map(c => (
                 <option key={c}>{c}</option>
@@ -164,26 +185,43 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
             </select>
           </div>
 
-          {/* Contact for enquiry */}
           <div className={styles.field}>
-            <label>WhatsApp / Phone *</label>
+            <label><Phone size={14} /> WhatsApp for Alerts *</label>
             <input type="tel" placeholder="+91 XXXXX XXXXX" required />
           </div>
 
-          <button type="submit" className={`btn btn-primary ${styles.searchBtn}`}>
-            {submitted ? '✓ Enquiry Sent!' : '🔍 Search Flights'}
+          <button 
+            type="submit" 
+            disabled={isSearching}
+            className={`btn btn-primary ${styles.searchBtn} ${isSearching ? styles.loading : ''}`}
+          >
+            {isSearching ? (
+              <><Loader2 size={18} className={styles.spin} /> Finding Best Fares...</>
+            ) : submitted ? (
+              <><CheckCircle2 size={18} /> Enquiry Sent!</>
+            ) : (
+              <><Search size={18} /> Search Flights</>
+            )}
           </button>
         </div>
 
-        {submitted && (
-          <p className={styles.successMsg}>
-            ✅ We received your flight enquiry! Our team will call you within 30 minutes.
-          </p>
-        )}
+        <AnimatePresence>
+          {submitted && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className={styles.successMsg}
+            >
+              <CheckCircle2 size={16} /> 
+              <span>We&apos;ve received your request! Our flight expert will call you shortly with the best available fares.</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </form>
 
       <p className={styles.note}>
-        ✦ Best fares guaranteed &nbsp;·&nbsp; No hidden charges &nbsp;·&nbsp; Free cancellation advice &nbsp;·&nbsp; 24/7 support
+        ✦ Best Fares Guaranteed &nbsp;·&nbsp; 24/7 Expert Support &nbsp;·&nbsp; Instant Confirmation
       </p>
     </div>
   );
