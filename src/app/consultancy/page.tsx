@@ -25,10 +25,10 @@ const consultancyServices = [
 ];
 
 const locations = [
-  { name: 'Mahabaleshwar', image: 'https://images.unsplash.com/photo-1594911776510-99882208035f?w=600&q=80' },
-  { name: 'Lonavala', image: 'https://images.unsplash.com/photo-1589135334757-55078516d2ca?w=600&q=80' },
-  { name: 'Khandala', image: 'https://images.unsplash.com/photo-1599424423714-f062d9481232?w=600&q=80' },
-  { name: 'Karjat', image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80' },
+  { name: 'Mahabaleshwar', image: 'https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=800&q=80' },
+  { name: 'Lonavala', image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80' },
+  { name: 'Khandala', image: 'https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=800&q=80' },
+  { name: 'Karjat', image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80' },
 ];
 
 export default function ConsultancyPage() {
