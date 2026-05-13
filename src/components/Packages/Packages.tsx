@@ -14,17 +14,19 @@ export default function Packages() {
 
   useEffect(() => {
     fetch('/php-backend/api/packages.php')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('Backend not found');
+        return res.json();
+      })
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {
           setDynamicPackages(data);
         } else {
-          // Use static ones if DB is empty or fails
           setDynamicPackages(allPackages);
         }
       })
       .catch(err => {
-        console.error('Failed to fetch packages', err);
+        console.warn('Backend unavailable, using static fallback:', err);
         setDynamicPackages(allPackages);
       })
       .finally(() => setLoading(false));
