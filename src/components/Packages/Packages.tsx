@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Compass, Globe, Sparkles } from 'lucide-react';
 import PackageCard from '@/components/PackageCard/PackageCard';
@@ -27,10 +27,29 @@ const allPackages = [...domestic, ...international];
 
 export default function Packages() {
   const [filter, setFilter] = useState<'all' | 'domestic' | 'international'>('all');
+  const [dynamicPackages, setDynamicPackages] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch('/php-backend/api/packages.php')
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data)) setDynamicPackages(data);
+      })
+      .catch(err => console.error('Failed to fetch packages', err));
+  }, []);
+
+  const combined = [...dynamicPackages, ...allPackages];
+
+  // Remove duplicates based on title if necessary, or just show all
+  const uniquePackages = combined.reduce((acc, current) => {
+    const x = acc.find((item: any) => item.title === current.title);
+    if (!x) return acc.concat([current]);
+    else return acc;
+  }, []);
 
   const filtered = filter === 'all' 
-    ? allPackages 
-    : allPackages.filter(p => p.category === filter);
+    ? uniquePackages 
+    : uniquePackages.filter((p: any) => p.category === filter);
 
   return (
     <section className={styles.section} id="packages">

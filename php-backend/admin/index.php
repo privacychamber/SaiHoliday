@@ -36,6 +36,13 @@ function getDB() {
         budget TEXT, message TEXT, type TEXT DEFAULT 'general',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )");
+    $db->exec("CREATE TABLE IF NOT EXISTS packages (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        title TEXT, location TEXT, duration TEXT,
+        price TEXT, image TEXT, category TEXT,
+        itinerary TEXT, 
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )");
     return $db;
 }
 
@@ -45,6 +52,29 @@ if ($logged_in && isset($_GET['delete_lead'])) {
     $stmt = $db->prepare("DELETE FROM leads WHERE id = ?");
     $stmt->execute([(int)$_GET['delete_lead']]);
     header('Location: index.php?tab=leads&deleted=1');
+    exit;
+}
+
+// Handle save/edit package
+if ($logged_in && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'save_package') {
+    $db = getDB();
+    if (!empty($_POST['id'])) {
+        $stmt = $db->prepare("UPDATE packages SET title=?, location=?, duration=?, price=?, image=?, category=?, itinerary=? WHERE id=?");
+        $stmt->execute([$_POST['title'], $_POST['location'], $_POST['duration'], $_POST['price'], $_POST['image'], $_POST['category'], $_POST['itinerary'], $_POST['id']]);
+    } else {
+        $stmt = $db->prepare("INSERT INTO packages (title, location, duration, price, image, category, itinerary) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$_POST['title'], $_POST['location'], $_POST['duration'], $_POST['price'], $_POST['image'], $_POST['category'], $_POST['itinerary']]);
+    }
+    header('Location: index.php?tab=manage-packages&saved=1');
+    exit;
+}
+
+// Handle delete package
+if ($logged_in && isset($_GET['delete_package'])) {
+    $db = getDB();
+    $stmt = $db->prepare("DELETE FROM packages WHERE id = ?");
+    $stmt->execute([(int)$_GET['delete_package']]);
+    header('Location: index.php?tab=manage-packages&deleted=1');
     exit;
 }
 
@@ -65,6 +95,7 @@ if ($logged_in && isset($_GET['export'])) {
 
 $tab = $_GET['tab'] ?? 'dashboard';
 $leads = [];
+$packages_list = [];
 $stats = [
     'total' => 0, 
     'today' => 0, 
@@ -79,6 +110,7 @@ $stats = [
 if ($logged_in) {
     $db = getDB();
     $leads = $db->query("SELECT * FROM leads ORDER BY created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
+    $packages_list = $db->query("SELECT * FROM packages ORDER BY created_at DESC")->fetchAll(PDO::FETCH_ASSOC);
     $stats['total'] = count($leads);
     $today = date('Y-m-d');
     foreach ($leads as $l) {
@@ -262,7 +294,10 @@ if ($logged_in) {
       <span class="icon">🛂</span> Visa (<?= $stats['visa'] ?>)
     </a>
     <a href="?tab=package" class="nav-link <?= $tab==='package'?'active':'' ?>">
-      <span class="icon">🗺️</span> Packages (<?= $stats['package'] ?>)
+      <span class="icon">🗺️</span> Package Enquiries (<?= $stats['package'] ?>)
+    </a>
+    <a href="?tab=manage-packages" class="nav-link <?= $tab==='manage-packages'?'active':'' ?>">
+      <span class="icon">⚙️</span> Manage Packages
     </a>
     <a href="?tab=consultancy" class="nav-link <?= $tab==='consultancy'?'active':'' ?>">
       <span class="icon">✦</span> Consultancy
@@ -428,6 +463,125 @@ if ($logged_in) {
         ⬇️ Download All Leads (<?= $stats['total'] ?> records)
       </a>
     </div>
+  <?php elseif($tab === 'manage-packages'): ?>
+    <div class="topbar">
+      <h1>⚙️ Manage Packages</h1>
+      <button class="btn btn-primary" onclick="openPackageModal()">+ Add New Package</button>
+    </div>
+
+    <?php if(isset($_GET['saved'])): ?>
+      <div class="alert-success">✅ Package saved successfully.</div>
+    <?php endif; ?>
+
+    <div class="card">
+      <?php if(empty($packages_list)): ?>
+        <p class="empty">No packages found. Click "Add New" to create one.</p>
+      <?php else: ?>
+      <table>
+        <thead><tr>
+          <th>ID</th><th>Title</th><th>Location</th><th>Price</th><th>Category</th><th>Action</th>
+        </tr></thead>
+        <tbody>
+          <?php foreach($packages_list as $p): ?>
+          <tr>
+            <td><?= $p['id'] ?></td>
+            <td><strong><?= htmlspecialchars($p['title']) ?></strong></td>
+            <td><?= htmlspecialchars($p['location']) ?></td>
+            <td><?= htmlspecialchars($p['price']) ?></td>
+            <td><span class="badge badge-general"><?= ucfirst($p['category']) ?></span></td>
+            <td>
+              <button class="btn btn-primary" onclick='editPackage(<?= json_encode($p) ?>)'>✏️</button>
+              <a href="?tab=manage-packages&delete_package=<?= $p['id'] ?>" 
+                 class="btn btn-danger" onclick="return confirm('Delete this package?')">🗑</a>
+            </td>
+          </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+      <?php endif; ?>
+    </div>
+
+    <!-- Package Modal -->
+    <div id="packageModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center; padding:2rem;">
+      <div class="card" style="width:100%; max-width:800px; max-height:90vh; overflow-y:auto;">
+        <div class="card-header">
+          <h2 id="modalTitle">Add New Package</h2>
+          <button onclick="closePackageModal()" class="btn btn-danger">X</button>
+        </div>
+        <form method="POST">
+          <input type="hidden" name="action" value="save_package">
+          <input type="hidden" name="id" id="p_id">
+          
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+            <div class="form-group">
+              <label>Package Title</label>
+              <input type="text" name="title" id="p_title" required>
+            </div>
+            <div class="form-group">
+              <label>Location</label>
+              <input type="text" name="location" id="p_location" required>
+            </div>
+            <div class="form-group">
+              <label>Duration</label>
+              <input type="text" name="duration" id="p_duration" placeholder="e.g. 5D/4N" required>
+            </div>
+            <div class="form-group">
+              <label>Starting Price</label>
+              <input type="text" name="price" id="p_price" placeholder="e.g. ₹19,999" required>
+            </div>
+            <div class="form-group">
+              <label>Image URL</label>
+              <input type="text" name="image" id="p_image" placeholder="Unsplash URL or local path" required>
+            </div>
+            <div class="form-group">
+              <label>Category</label>
+              <select name="category" id="p_category">
+                <option value="domestic">Domestic</option>
+                <option value="international">International</option>
+                <option value="villa">Villa / Staycation</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Itinerary (JSON or HTML)</label>
+            <textarea name="itinerary" id="p_itinerary" rows="10" style="width:100%; padding:1rem; border:2px solid #e5e7eb; border-radius:10px;" placeholder='[{"day": 1, "title": "Arrival", "activities": "Pick up from airport..."}]'></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%; padding:1rem;">Save Package</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function openPackageModal() {
+        document.getElementById('packageModal').style.display = 'flex';
+        document.getElementById('modalTitle').innerText = 'Add New Package';
+        document.getElementById('p_id').value = '';
+        document.getElementById('p_title').value = '';
+        document.getElementById('p_location').value = '';
+        document.getElementById('p_duration').value = '';
+        document.getElementById('p_price').value = '';
+        document.getElementById('p_image').value = '';
+        document.getElementById('p_category').value = 'domestic';
+        document.getElementById('p_itinerary').value = '';
+      }
+      function closePackageModal() {
+        document.getElementById('packageModal').style.display = 'none';
+      }
+      function editPackage(p) {
+        openPackageModal();
+        document.getElementById('modalTitle').innerText = 'Edit Package';
+        document.getElementById('p_id').value = p.id;
+        document.getElementById('p_title').value = p.title;
+        document.getElementById('p_location').value = p.location;
+        document.getElementById('p_duration').value = p.duration;
+        document.getElementById('p_price').value = p.price;
+        document.getElementById('p_image').value = p.image;
+        document.getElementById('p_category').value = p.category;
+        document.getElementById('p_itinerary').value = p.itinerary;
+      }
+    </script>
   <?php endif; ?>
 </div>
 <?php endif; ?>

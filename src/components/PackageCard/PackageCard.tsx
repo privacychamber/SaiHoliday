@@ -1,9 +1,11 @@
 'use client';
+import Link from 'next/link';
 import styles from './PackageCard.module.css';
 
 const WA = '919999999999'; // ← Replace with real number
 
 export interface PackageCardProps {
+  id?: number | string;
   image: string; title: string; location: string;
   duration: string; price: string; rating: number;
   badge?: string; badgeType?: 'gold' | 'amber';
@@ -11,7 +13,7 @@ export interface PackageCardProps {
 }
 
 export default function PackageCard({
-  image, title, location, duration, price, rating, badge, badgeType = 'gold',
+  id, image, title, location, duration, price, rating, badge, badgeType = 'gold',
 }: PackageCardProps) {
   const sendEnquiry = () => {
     const msg = encodeURIComponent(
@@ -38,11 +40,10 @@ export default function PackageCard({
           Starting from <strong>{price}</strong><span>/person</span>
         </p>
         <div className={styles.actions}>
-          <button className="btn btn-ghost-gold"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+          <Link href={id ? `/itinerary/?id=${id}` : '#contact'} className="btn btn-ghost-gold" style={{ fontSize: '0.8rem' }}>
             View Itinerary
-          </button>
-          <button className="btn btn-primary" onClick={sendEnquiry}>Send Enquiry</button>
+          </Link>
+          <button className="btn btn-primary" onClick={sendEnquiry} style={{ fontSize: '0.8rem' }}>Send Enquiry</button>
         </div>
       </div>
     </div>
