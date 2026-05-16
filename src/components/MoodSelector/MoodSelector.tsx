@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import styles from './MoodSelector.module.css';
 
+const BASE = process.env.NODE_ENV === 'production' ? '/SaiHoliday' : '';
+
 const moods = [
   { icon: '🏖️', label: 'Beach & Sun' },
   { icon: '🏔️', label: 'Mountains' },
@@ -21,11 +23,11 @@ const moodPackages: Record<string, { title: string; location: string; price: str
   ],
   'Mountains': [
     { title: 'Kashmir Valley', location: 'Srinagar, J&K', price: '₹24,999', image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&q=80' },
-    { title: 'Manali Snow Adventure', location: 'Himachal Pradesh', price: '₹16,999', image: '/images/packages/manali.png' },
+    { title: 'Manali Snow Adventure', location: 'Himachal Pradesh', price: '₹16,999', image: `${BASE}/images/packages/manali.png` },
     { title: 'Swiss Alps Explorer', location: 'Interlaken, Switzerland', price: '₹1,29,999', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80' },
   ],
   'Spiritual': [
-    { title: 'Divine Kedarnath Yatra', location: 'Uttarakhand', price: '₹18,999', image: '/images/packages/kedarnath.png' },
+    { title: 'Divine Kedarnath Yatra', location: 'Uttarakhand', price: '₹18,999', image: `${BASE}/images/packages/kedarnath.png` },
     { title: 'Spiritual Varanasi', location: 'Uttar Pradesh', price: '₹9,999', image: 'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=500&q=80' },
     { title: 'Rishikesh Retreat', location: 'Uttarakhand', price: '₹12,999', image: 'https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=500&q=80' },
   ],
@@ -41,7 +43,7 @@ const moodPackages: Record<string, { title: string; location: string; price: str
   ],
   'Family': [
     { title: 'Kerala Family Tour', location: 'Alleppey, Munnar', price: '₹22,999', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80' },
-    { title: 'Rajasthan Royal Family Tour', location: 'Jaipur, Udaipur', price: '₹21,999', image: '/images/packages/rajasthan.png' },
+    { title: 'Rajasthan Royal Family Tour', location: 'Jaipur, Udaipur', price: '₹21,999', image: `${BASE}/images/packages/rajasthan.png` },
     { title: 'Singapore Family Discovery', location: 'Singapore', price: '₹59,999', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=500&q=80' },
   ],
   'Luxury': [

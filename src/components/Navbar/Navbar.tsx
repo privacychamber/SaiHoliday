@@ -5,16 +5,8 @@ import styles from './Navbar.module.css';
 
 const navLinks = [
   { label: 'Home', href: '/' },
-  {
-    label: 'Packages', href: '#packages',
-    children: ['Domestic Escapes', 'International Escapes', 'Honeymoon Packages', 'Group & Family Tours'],
-  },
   { label: 'Flights', href: '/flight' },
   { label: 'Consultancy', href: '/consultancy' },
-  {
-    label: 'Experiences', href: '#experiences',
-    children: ['Adventure Tours', 'Spiritual Journeys', 'Luxury Retreats', 'Weekend Getaways'],
-  },
   { label: 'Services', href: '#services' },
   { label: 'Contact', href: '#contact' },
 ];
