@@ -23,7 +23,7 @@
   z-index: 1000;
   padding: 1rem 0;
   transition: background var(--t-med), box-shadow var(--t-med), padding var(--t-med);
-  background: transparent;
+  background: rgba(10, 22, 40, 0.95);
 }
 
 .scrolled {
