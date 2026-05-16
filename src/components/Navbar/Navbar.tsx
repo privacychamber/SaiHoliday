@@ -9,14 +9,13 @@ const navLinks = [
     label: 'Packages', href: '#packages',
     children: ['Domestic Escapes', 'International Escapes', 'Honeymoon Packages', 'Group & Family Tours'],
   },
+  { label: 'Flights', href: '/flight' },
   { label: 'Consultancy', href: '/consultancy' },
   {
     label: 'Experiences', href: '#experiences',
     children: ['Adventure Tours', 'Spiritual Journeys', 'Luxury Retreats', 'Weekend Getaways'],
   },
   { label: 'Services', href: '#services' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
 

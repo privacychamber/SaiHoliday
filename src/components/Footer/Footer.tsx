@@ -2,7 +2,13 @@
 import styles from './Footer.module.css';
 
 const destinations = ['Kashmir', 'Manali', 'Goa', 'Kerala', 'Bali', 'Dubai', 'Maldives', 'Switzerland', 'Paris', 'Singapore'];
-const quickLinks = ['Home', 'Packages', 'Experiences', 'Services', 'Gallery', 'About', 'Contact'];
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Packages', href: '#packages' },
+  { label: 'Flights', href: '/flight' },
+  { label: 'Consultancy', href: '/consultancy' },
+  { label: 'Contact', href: '#contact' },
+];
 
 export default function Footer() {
   return (
@@ -34,7 +40,7 @@ export default function Footer() {
           <h4 className={styles.colTitle}>Quick Links</h4>
           <ul className={styles.list}>
             {quickLinks.map((l) => (
-              <li key={l}><a href="#" className={styles.link}>{l}</a></li>
+              <li key={l.label}><a href={l.href} className={styles.link}>{l.label}</a></li>
             ))}
           </ul>
         </div>
