@@ -11,7 +11,16 @@ const categories = [
   { icon: '🎉', label: 'Group Tours', cta: 'Book Group Travel', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80', desc: 'Epic adventures, shared memories' },
 ];
 
+const WA = '919999999999'; // ← Replace with real number
+
 export default function Experiences() {
+  const handleEnquiry = (cat: { label: string; desc: string }) => {
+    const msg = encodeURIComponent(
+      `Hi Sai Holiday! 🙏\n\nI'm interested in *${cat.label}*.\n${cat.desc}\n\nPlease share available packages and details.`
+    );
+    window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+  };
+
   return (
     <section className={styles.section} id="experiences">
       <div className="container">
@@ -28,14 +37,14 @@ export default function Experiences() {
 
         <div className={styles.grid}>
           {categories.map((cat) => (
-            <div key={cat.label} className={styles.block}>
+            <div key={cat.label} className={styles.block} onClick={() => handleEnquiry(cat)} style={{ cursor: 'pointer' }}>
               <img src={cat.image} alt={cat.label} className={styles.blockImg} loading="lazy" />
               <div className={styles.blockOverlay} />
               <div className={styles.blockContent}>
                 <span className={styles.blockIcon}>{cat.icon}</span>
                 <h3 className={styles.blockTitle}>{cat.label}</h3>
                 <p className={styles.blockDesc}>{cat.desc}</p>
-                <button className={`btn btn-outline ${styles.blockCta}`}>{cat.cta} →</button>
+                <button className={`btn btn-outline ${styles.blockCta}`} onClick={(e) => { e.stopPropagation(); handleEnquiry(cat); }}>{cat.cta} →</button>
               </div>
             </div>
           ))}
