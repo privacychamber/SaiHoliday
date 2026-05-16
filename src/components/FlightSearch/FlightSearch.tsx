@@ -203,7 +203,7 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
 
           <div className={styles.field}>
             <label><Phone size={14} /> WhatsApp for Alerts *</label>
-            <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+            <input type="tel" placeholder="+91 95945 41724" required />
           </div>
 
           <button 

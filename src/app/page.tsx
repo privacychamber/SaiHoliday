@@ -44,7 +44,7 @@ export default function HomePage() {
 
       {/* WhatsApp FAB */}
       <a
-        href="https://wa.me/91XXXXXXXXXX?text=Hi Sai Holiday, I want to enquire about a travel package."
+        href="https://wa.me/919594541724?text=Hi Sai Holiday, I want to enquire about a travel package."
         target="_blank"
         rel="noreferrer"
         className="whatsapp-fab"

@@ -18,11 +18,11 @@ export default function Enquiry() {
           </p>
 
           <div className={styles.contactInfo}>
-            <a href="tel:+91XXXXXXXXXX" className={styles.infoItem}>
+            <a href="tel:+919594541724" className={styles.infoItem}>
               <span className={styles.infoIcon}>📞</span>
               <div>
                 <strong>Call / WhatsApp</strong>
-                <span>+91 XXXXX XXXXX</span>
+                <span>+91 95945 41724</span>
               </div>
             </a>
             <a href="mailto:info@saiholiday.in" className={styles.infoItem}>
@@ -43,13 +43,13 @@ export default function Enquiry() {
 
           <div className={styles.ctaBtns}>
             <a
-              href="https://wa.me/91XXXXXXXXXX?text=Hi Sai Holiday, I want to enquire about a travel package."
+              href="https://wa.me/919594541724?text=Hi Sai Holiday, I want to enquire about a travel package."
               target="_blank" rel="noreferrer"
               className="btn btn-primary"
             >
               💬 WhatsApp Now
             </a>
-            <a href="tel:+91XXXXXXXXXX" className="btn btn-outline">📞 Call Our Experts</a>
+            <a href="tel:+919594541724" className="btn btn-outline">📞 Call Our Experts</a>
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export default function Enquiry() {
               </div>
               <div className={styles.field}>
                 <label htmlFor="eq-phone">WhatsApp Number *</label>
-                <input id="eq-phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+                <input id="eq-phone" type="tel" placeholder="+91 95945 41724" required />
               </div>
             </div>
             <div className={styles.field}>

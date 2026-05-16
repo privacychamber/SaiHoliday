@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, MessageSquare, ChevronDown, Star, Users, MapPin, Calendar, Home } from 'lucide-react';
 import styles from './Hero.module.css';
 
-const WA_NUMBER = '919999999999'; // ← Replace with real number (country code + number, no +)
+const WA_NUMBER = '919594541724';
 
 const slides = [
   { image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=1920&q=85', label: 'Kashmir', tagline: 'Heaven on Earth' },
@@ -61,7 +61,7 @@ function HeroForm() {
       </div>
       <div className={styles.field}>
         <label htmlFor="hero-phone">WhatsApp Number</label>
-        <input id="hero-phone" type="tel" placeholder="+91 XXXXX XXXXX" value={phone}
+        <input id="hero-phone" type="tel" placeholder="+91 95945 41724" value={phone}
           onChange={e => setPhone(e.target.value)} required />
       </div>
       <div className={styles.field}>

@@ -137,7 +137,7 @@ function ItineraryContent() {
               <button 
                 className="btn btn-primary" 
                 style={{ width: '100%', justifyContent: 'center' }}
-                onClick={() => window.open(`https://wa.me/91XXXXXXXXXX?text=Hi, I'm interested in the ${pkg.title} package!`)}
+                onClick={() => window.open(`https://wa.me/919594541724?text=Hi, I'm interested in the ${pkg.title} package!`)}
               >
                 <MessageSquare size={18} /> Enquire on WhatsApp
               </button>

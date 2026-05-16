@@ -149,10 +149,10 @@ export default function ConsultancyPage() {
             <h2>Need Free Advice?</h2>
             <p style={{ marginBottom: '2rem', fontSize: '1.2rem' }}>Our senior travel consultants are ready to help you plan your perfect weekend.</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="https://wa.me/91XXXXXXXXXX" className="btn btn-primary" style={{ background: '#25D366', color: 'white', border: 'none' }}>
+              <a href="https://wa.me/919594541724" className="btn btn-primary" style={{ background: '#25D366', color: 'white', border: 'none' }}>
                 <MessageSquare size={20} /> Chat on WhatsApp
               </a>
-              <a href="tel:+91XXXXXXXXXX" className="btn btn-outline" style={{ color: 'var(--sapphire)', borderColor: 'var(--sapphire)' }}>
+              <a href="tel:+919594541724" className="btn btn-outline" style={{ color: 'var(--sapphire)', borderColor: 'var(--sapphire)' }}>
                 <Phone size={20} /> Call a Consultant
               </a>
             </div>

@@ -181,7 +181,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
                   </div>
                   <div className={styles.field}>
                     <label>Phone Number (WhatsApp)</label>
-                    <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required />
+                    <input type="tel" name="phone" placeholder="+91 95945 41724" required />
                   </div>
 
                   {renderForm()}

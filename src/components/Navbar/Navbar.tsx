@@ -7,7 +7,7 @@ const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Flights', href: '/flight' },
   { label: 'Consultancy', href: '/consultancy' },
-  { label: 'Services', href: '#services' },
+  { label: 'Services', href: '/services' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -27,7 +27,7 @@ export default function Navbar() {
       <div className={styles.utilityBar}>
         <div className={`container ${styles.utilityInner}`}>
           <span>✉ info@saiholiday.in</span>
-          <span>📞 +91 XXXXX XXXXX &nbsp;|&nbsp; Mon–Sat 9 AM – 8 PM</span>
+          <span>📞 +91 95945 41724 &nbsp;|&nbsp; Mon–Sat 9 AM – 8 PM</span>
         </div>
       </div>
 
@@ -58,7 +58,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className={styles.ctaGroup}>
-            <a href="tel:+91XXXXXXXXXX" className={`btn btn-primary ${styles.ctaBtn}`}>
+            <a href="tel:+919594541724" className={`btn btn-primary ${styles.ctaBtn}`}>
               📞 Get Free Quote
             </a>
             <button
@@ -87,9 +87,9 @@ export default function Navbar() {
               </Link>
             ))}
             <div className={styles.mobileCtas}>
-              <a href="tel:+91XXXXXXXXXX" className="btn btn-primary">📞 Call Now</a>
+              <a href="tel:+919594541724" className="btn btn-primary">📞 Call Now</a>
               <a
-                href="https://wa.me/91XXXXXXXXXX?text=Hi Sai Holiday, I want to enquire about a travel package."
+                href="https://wa.me/919594541724?text=Hi Sai Holiday, I want to enquire about a travel package."
                 target="_blank" rel="noreferrer"
                 className="btn btn-ghost-gold"
               >💬 WhatsApp</a>

@@ -31,7 +31,7 @@ export default function Footer() {
             <a href="#" aria-label="Instagram" className={styles.social}>📸</a>
             <a href="#" aria-label="Facebook" className={styles.social}>📘</a>
             <a href="#" aria-label="YouTube" className={styles.social}>🎬</a>
-            <a href="https://wa.me/91XXXXXXXXXX" aria-label="WhatsApp" className={styles.social}>💬</a>
+            <a href="https://wa.me/919594541724" aria-label="WhatsApp" className={styles.social}>💬</a>
           </div>
         </div>
 
@@ -59,13 +59,13 @@ export default function Footer() {
         <div>
           <h4 className={styles.colTitle}>Contact Us</h4>
           <ul className={styles.contactList}>
-            <li><a href="tel:+91XXXXXXXXXX" className={styles.link}>📞 +91 XXXXX XXXXX</a></li>
+            <li><a href="tel:+919594541724" className={styles.link}>📞 +91 95945 41724</a></li>
             <li><a href="mailto:info@saiholiday.in" className={styles.link}>✉️ info@saiholiday.in</a></li>
             <li><span className={styles.link}>🕐 Mon–Sat, 9 AM – 8 PM</span></li>
             <li><span className={styles.link}>📍 [Your Office Address]</span></li>
           </ul>
           <a
-            href="https://wa.me/91XXXXXXXXXX?text=Hi Sai Holiday!"
+            href="https://wa.me/919594541724?text=Hi Sai Holiday!"
             target="_blank" rel="noreferrer"
             className={`btn btn-primary ${styles.waBtn}`}
           >

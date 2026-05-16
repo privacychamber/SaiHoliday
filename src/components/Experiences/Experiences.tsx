@@ -11,7 +11,7 @@ const categories = [
   { icon: '🎉', label: 'Group Tours', cta: 'Book Group Travel', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80', desc: 'Epic adventures, shared memories' },
 ];
 
-const WA = '919999999999'; // ← Replace with real number
+const WA = '919594541724';
 
 export default function Experiences() {
   const handleEnquiry = (cat: { label: string; desc: string }) => {

@@ -107,10 +107,10 @@ export default function FlightPage() {
                 <p>Call our travel experts — we&apos;ll find you the best deal in minutes.</p>
               </div>
               <div className={styles.ctaBtns}>
-                <a href="https://wa.me/91XXXXXXXXXX?text=Hi, I need help booking a flight" target="_blank" rel="noreferrer" className="btn btn-primary">
+                <a href="https://wa.me/919594541724?text=Hi, I need help booking a flight" target="_blank" rel="noreferrer" className="btn btn-primary">
                   💬 WhatsApp Us
                 </a>
-                <a href="tel:+91XXXXXXXXXX" className="btn btn-outline">📞 Call Now</a>
+                <a href="tel:+919594541724" className="btn btn-outline">📞 Call Now</a>
               </div>
             </div>
           </div>

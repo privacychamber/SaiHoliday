@@ -63,7 +63,7 @@ export default function MoodSelector() {
   const packages = moodPackages[selected] ?? [];
 
   const sendEnquiry = (pkg: { title: string; location: string; price: string }) => {
-    const WA = '919999999999'; // ← Replace with real number
+    const WA = '919594541724';
     const msg = encodeURIComponent(
       `Hi Sai Holiday! 🙏\n\nI'm interested in the *${pkg.title}* package.\nLocation: ${pkg.location}\nPrice: ${pkg.price}\n\nPlease share more details.`
     );

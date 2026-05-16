@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { MapPin } from 'lucide-react';
 import styles from './PackageCard.module.css';
 
-const WA = '919999999999'; // ← Replace with real number
+const WA = '919594541724';
 
 export interface PackageCardProps {
   id?: number | string;
