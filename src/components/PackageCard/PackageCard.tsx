@@ -41,10 +41,10 @@ export default function PackageCard({
           Starting from <strong>{price}</strong><span>/person</span>
         </p>
         <div className={styles.actions}>
-          <Link href={id ? `/itinerary/?id=${id}` : '#contact'} className="btn btn-ghost-gold" style={{ fontSize: '0.8rem' }}>
-            View Itinerary
+          <Link href="#contact" className="btn btn-ghost-gold" style={{ fontSize: '0.8rem' }}>
+            Quick Enquiry
           </Link>
-          <button className="btn btn-primary" onClick={sendEnquiry} style={{ fontSize: '0.8rem' }}>Send Enquiry</button>
+          <button className="btn btn-primary" onClick={sendEnquiry} style={{ fontSize: '0.8rem' }}>WhatsApp</button>
         </div>
       </div>
     </div>

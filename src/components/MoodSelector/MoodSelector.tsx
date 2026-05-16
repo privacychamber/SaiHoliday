@@ -21,11 +21,11 @@ const moodPackages: Record<string, { title: string; location: string; price: str
   ],
   'Mountains': [
     { title: 'Kashmir Valley', location: 'Srinagar, J&K', price: '₹24,999', image: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=500&q=80' },
-    { title: 'Manali Snow Adventure', location: 'Himachal Pradesh', price: '₹16,999', image: 'https://images.unsplash.com/photo-1585516482984-d1a32eb4a1c5?w=500&q=80' },
+    { title: 'Manali Snow Adventure', location: 'Himachal Pradesh', price: '₹16,999', image: '/images/packages/manali.png' },
     { title: 'Swiss Alps Explorer', location: 'Interlaken, Switzerland', price: '₹1,29,999', image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80' },
   ],
   'Spiritual': [
-    { title: 'Divine Kedarnath Yatra', location: 'Uttarakhand', price: '₹18,999', image: 'https://images.unsplash.com/photo-1608555855762-2b657eb1278b?w=500&q=80' },
+    { title: 'Divine Kedarnath Yatra', location: 'Uttarakhand', price: '₹18,999', image: '/images/packages/kedarnath.png' },
     { title: 'Spiritual Varanasi', location: 'Uttar Pradesh', price: '₹9,999', image: 'https://images.unsplash.com/photo-1561214115-f2f134cc4912?w=500&q=80' },
     { title: 'Rishikesh Retreat', location: 'Uttarakhand', price: '₹12,999', image: 'https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=500&q=80' },
   ],
@@ -41,7 +41,7 @@ const moodPackages: Record<string, { title: string; location: string; price: str
   ],
   'Family': [
     { title: 'Kerala Family Tour', location: 'Alleppey, Munnar', price: '₹22,999', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80' },
-    { title: 'Rajasthan Royal Family Tour', location: 'Jaipur, Udaipur', price: '₹21,999', image: 'https://images.unsplash.com/photo-1477587458883-47145ed94397?w=500&q=80' },
+    { title: 'Rajasthan Royal Family Tour', location: 'Jaipur, Udaipur', price: '₹21,999', image: '/images/packages/rajasthan.png' },
     { title: 'Singapore Family Discovery', location: 'Singapore', price: '₹59,999', image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=500&q=80' },
   ],
   'Luxury': [
@@ -59,6 +59,14 @@ const moodPackages: Record<string, { title: string; location: string; price: str
 export default function MoodSelector() {
   const [selected, setSelected] = useState('Beach & Sun');
   const packages = moodPackages[selected] ?? [];
+
+  const sendEnquiry = (pkg: { title: string; location: string; price: string }) => {
+    const WA = '919999999999'; // ← Replace with real number
+    const msg = encodeURIComponent(
+      `Hi Sai Holiday! 🙏\n\nI'm interested in the *${pkg.title}* package.\nLocation: ${pkg.location}\nPrice: ${pkg.price}\n\nPlease share more details.`
+    );
+    window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+  };
 
   return (
     <section className={styles.section} id="mood">
@@ -97,7 +105,11 @@ export default function MoodSelector() {
                 <p className={styles.cardLocation}>📍 {pkg.location}</p>
                 <h3 className={styles.cardTitle}>{pkg.title}</h3>
                 <p className={styles.cardPrice}>from <strong>{pkg.price}</strong></p>
-                <button className="btn btn-primary" style={{ fontSize: '0.82rem', padding: '0.55rem 1.2rem' }}>
+                <button 
+                  className="btn btn-primary" 
+                  style={{ fontSize: '0.82rem', padding: '0.55rem 1.2rem' }}
+                  onClick={() => sendEnquiry(pkg)}
+                >
                   Get Enquiry
                 </button>
               </div>
