@@ -14,7 +14,6 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -49,22 +48,10 @@ export default function Navbar() {
               <li
                 key={link.label}
                 className={styles.navItem}
-                onMouseEnter={() => link.children && setActiveDropdown(link.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
               >
                 <Link href={link.href} className={styles.navLink}>
                   {link.label}
-                  {link.children && <span className={styles.chevron}>▾</span>}
                 </Link>
-                {link.children && activeDropdown === link.label && (
-                  <ul className={styles.dropdown}>
-                    {link.children.map((child) => (
-                      <li key={child}>
-                        <Link href="#packages" className={styles.dropdownItem}>{child}</Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </li>
             ))}
           </ul>
