@@ -24,14 +24,15 @@ function ItineraryContent() {
         
         if (data && !data.error) {
           // Parse itinerary if it's a string
+          let itineraryData = null;
           if (typeof data.itinerary === 'string' && data.itinerary.trim().startsWith('[')) {
             try {
-              data.itineraryData = JSON.parse(data.itinerary);
+              itineraryData = JSON.parse(data.itinerary);
             } catch (e) {
-              data.itineraryData = null;
+              itineraryData = null;
             }
           }
-          setPkg(data);
+          setPkg({ ...data, itineraryData });
           setLoading(false);
           return;
         }
@@ -42,15 +43,15 @@ function ItineraryContent() {
       // Fallback to static data
       const staticPkg = allPackages.find(p => String(p.id) === String(id));
       if (staticPkg) {
-        const data = { ...staticPkg };
-        if (typeof data.itinerary === 'string' && data.itinerary.trim().startsWith('[')) {
+        let itineraryData = null;
+        if (typeof staticPkg.itinerary === 'string' && staticPkg.itinerary.trim().startsWith('[')) {
           try {
-            data.itineraryData = JSON.parse(data.itinerary);
+            itineraryData = JSON.parse(staticPkg.itinerary);
           } catch (e) {
-            data.itineraryData = null;
+            itineraryData = null;
           }
         }
-        setPkg(data);
+        setPkg({ ...staticPkg, itineraryData });
       }
       setLoading(false);
     };
