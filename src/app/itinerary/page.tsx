@@ -130,8 +130,7 @@ function ItineraryContent() {
           <div className={styles.bookCard}>
             <span className="section-label" style={{ color: 'var(--gold)' }}>Special Offer</span>
             <h3>Book This Trip</h3>
-            <p className={styles.price}>{pkg.price}</p>
-            <p style={{ opacity: 0.8, marginBottom: '2rem' }}>Per person including taxes</p>
+            <p className={styles.price}>Get a Free Quote</p>
             
             <div style={{ display: 'grid', gap: '1rem' }}>
               <button 

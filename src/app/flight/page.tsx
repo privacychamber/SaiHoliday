@@ -14,12 +14,12 @@ const features = [
 ];
 
 const popularRoutes = [
-  { from: 'Delhi', to: 'Mumbai', code: 'DEL→BOM', price: '₹2,499' },
-  { from: 'Mumbai', to: 'Goa', code: 'BOM→GOI', price: '₹1,899' },
-  { from: 'Delhi', to: 'Bengaluru', code: 'DEL→BLR', price: '₹2,799' },
-  { from: 'Mumbai', to: 'Dubai', code: 'BOM→DXB', price: '₹12,499' },
-  { from: 'Delhi', to: 'Singapore', code: 'DEL→SIN', price: '₹18,999' },
-  { from: 'Bengaluru', to: 'Bangkok', code: 'BLR→BKK', price: '₹14,999' },
+  { from: 'Delhi', to: 'Mumbai', code: 'DEL→BOM' },
+  { from: 'Mumbai', to: 'Goa', code: 'BOM→GOI' },
+  { from: 'Delhi', to: 'Bengaluru', code: 'DEL→BLR' },
+  { from: 'Mumbai', to: 'Dubai', code: 'BOM→DXB' },
+  { from: 'Delhi', to: 'Singapore', code: 'DEL→SIN' },
+  { from: 'Bengaluru', to: 'Bangkok', code: 'BLR→BKK' },
 ];
 
 export default function FlightPage() {
@@ -67,8 +67,7 @@ export default function FlightPage() {
                   </div>
                   <span className={styles.routeCode}>{r.code}</span>
                   <div className={styles.routePrice}>
-                    <span>Starting from</span>
-                    <strong>{r.price}</strong>
+                    <span>Enquire for best fares</span>
                   </div>
                   <button className="btn btn-ghost-gold" style={{ fontSize: '0.8rem', padding: '0.5rem 1rem' }}>
                     Book Now

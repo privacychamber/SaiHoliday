@@ -67,7 +67,7 @@ export default function Enquiry() {
               email: (document.getElementById('eq-email') as HTMLInputElement).value,
               destination: (document.getElementById('eq-dest') as HTMLSelectElement).value,
               travel_date: (document.getElementById('eq-date') as HTMLInputElement).value,
-              budget: (document.getElementById('eq-budget') as HTMLSelectElement).value,
+              pax: (document.getElementById('eq-pax') as HTMLInputElement).value,
               message: (document.getElementById('eq-msg') as HTMLTextAreaElement).value,
               type: 'general'
             };
@@ -122,14 +122,8 @@ export default function Enquiry() {
               </div>
             </div>
             <div className={styles.field}>
-              <label htmlFor="eq-budget">Budget Range</label>
-              <select id="eq-budget">
-                <option value="">Select budget…</option>
-                <option>Under ₹20,000</option>
-                <option>₹20,000 – ₹50,000</option>
-                <option>₹50,000 – ₹1,00,000</option>
-                <option>Above ₹1,00,000</option>
-              </select>
+              <label htmlFor="eq-pax">Number of Travelers</label>
+              <input id="eq-pax" type="number" min="1" defaultValue="1" required />
             </div>
             <div className={styles.field}>
               <label htmlFor="eq-msg">Message / Special Requests</label>

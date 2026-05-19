@@ -134,8 +134,8 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
               <input name="travel_date" placeholder="e.g. October 2025" required />
             </div>
             <div className={styles.field}>
-              <label>Approx Budget (Total)</label>
-              <input name="budget" placeholder="e.g. ₹50,000" />
+              <label>Number of Travelers</label>
+              <input name="pax" type="number" min="1" defaultValue="1" required />
             </div>
           </>
         );
