@@ -18,6 +18,8 @@ export default function HomePage() {
       <main>
         <Hero />
 
+        <Packages />
+
         {/* Flight Search Strip */}
         <section style={{ background: 'var(--linen)', padding: '2.5rem 0' }}>
           <div className="container">
@@ -33,7 +35,6 @@ export default function HomePage() {
         </section>
 
         <Stats />
-        <Packages />
         <Experiences />
         <MoodSelector />
         <Services />

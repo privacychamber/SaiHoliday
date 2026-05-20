@@ -8,17 +8,17 @@ const WA = '919594541724';
 export interface PackageCardProps {
   id?: number | string;
   image: string; title: string; location: string;
-  duration: string; rating: number;
+  duration: string; price?: string; rating: number;
   badge?: string; badgeType?: 'gold' | 'amber';
   type: 'domestic' | 'international';
 }
 
 export default function PackageCard({
-  id, image, title, location, duration, rating, badge, badgeType = 'gold',
+  id, image, title, location, duration, price, rating, badge, badgeType = 'gold',
 }: PackageCardProps) {
   const sendEnquiry = () => {
     const msg = encodeURIComponent(
-      `Hi Sai Holiday! 🙏\n\nI'm interested in:\n*${title}*\nLocation: ${location}\nDuration: ${duration}\n\nPlease send me the full itinerary and availability.`
+      `Hi Sai Holiday! 🙏\n\nI'm interested in:\n*${title}*\nLocation: ${location}\nDuration: ${duration}${price ? `\nPrice: ${price}` : ''}\n\nPlease send me the full itinerary and availability.`
     );
     window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
   };
@@ -37,6 +37,11 @@ export default function PackageCard({
           <span className={styles.rating}>{'★'.repeat(rating)}{'☆'.repeat(5 - rating)}</span>
         </div>
         <h3 className={styles.title}>{title}</h3>
+        {price && (
+          <p className={styles.price}>
+            Starting from <strong>{price}</strong><span>/person</span>
+          </p>
+        )}
         <div className={styles.actions}>
           <Link href="#contact" className="btn btn-ghost-gold" style={{ fontSize: '0.8rem' }}>
             Quick Enquiry

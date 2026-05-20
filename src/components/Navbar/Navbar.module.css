@@ -99,7 +99,7 @@
 
 .navLink:hover {
   color: var(--gold);
-  background: rgba(240, 165, 0, 0.08);
+  background: rgba(0, 167, 157, 0.08);
 }
 
 .chevron {
@@ -130,7 +130,7 @@
 }
 
 .dropdownItem:hover {
-  background: rgba(240, 165, 0, 0.12);
+  background: rgba(0, 167, 157, 0.12);
   color: var(--gold);
 }
 

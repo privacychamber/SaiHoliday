@@ -1,6 +1,6 @@
 /* ============================================================
    SAI HOLIDAY — GLOBAL DESIGN SYSTEM
-   Palette A: Golden Horizon
+   Palette A: Tropical Shore (Teal, Navy & Sunset Orange)
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
@@ -8,14 +8,15 @@
 /* ─── CSS Custom Properties ─── */
 :root {
   /* Brand Colors */
-  --sapphire: #0A1628;
-  --sapphire-mid: #1C2B3A;
-  --gold: #F0A500;
-  --gold-light: #FFD166;
-  --amber: #E07B39;
+  --sapphire: #082C40;
+  --sapphire-mid: #133E57;
+  --gold: #00A79D;
+  --gold-mid: #0C978E;
+  --gold-light: #33BBB3;
+  --amber: #F7931E;
   --linen: #FAF7F2;
   --linen-dark: #F0EBE1;
-  --ink: #0D1B2A;
+  --ink: #061D2B;
   --muted: #6B7A8D;
   --white: #FFFFFF;
 
@@ -41,7 +42,7 @@
   /* Shadows */
   --shadow-card: 0 4px 24px rgba(10, 22, 40, 0.12);
   --shadow-hover: 0 12px 40px rgba(10, 22, 40, 0.22);
-  --shadow-gold: 0 0 0 2px rgba(240, 165, 0, 0.55);
+  --shadow-gold: 0 0 0 2px rgba(0, 167, 157, 0.55);
 }
 
 /* ─── Reset ─── */
@@ -129,13 +130,13 @@ ul {
 
 .btn-primary {
   background: var(--gold);
-  color: var(--sapphire);
-  box-shadow: 0 4px 18px rgba(240, 165, 0, 0.35);
+  color: var(--white); /* White text on teal buttons looks much cleaner and has higher contrast */
+  box-shadow: 0 4px 18px rgba(0, 167, 157, 0.35);
 }
 
 .btn-primary:hover {
   background: var(--gold-light);
-  box-shadow: 0 8px 28px rgba(240, 165, 0, 0.5);
+  box-shadow: 0 8px 28px rgba(0, 167, 157, 0.5);
 }
 
 .btn-outline {
