@@ -111,35 +111,6 @@ export default function ConsultancyPage() {
           </div>
         </section>
 
-        {/* Service Cards */}
-        <section className={styles.servicesSection}>
-          <div className="container">
-            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <span className="section-label">✦ What We Offer</span>
-              <h2 className="section-title">Our Consultancy Services</h2>
-              <p className="section-sub" style={{ marginInline: 'auto' }}>
-                From luxury pool villas to peaceful nature retreats — we curate the perfect stay for every occasion.
-              </p>
-            </div>
-            <div className={styles.grid}>
-              {consultancyServices.map((service, i) => (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className={styles.card}
-                >
-                  <div className={styles.cardIcon}>{service.icon}</div>
-                  <h3 className={styles.cardTitle}>{service.title}</h3>
-                  <p className={styles.cardText}>{service.text}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Locations Section */}
         <section className={styles.locations}>
           <div className="container">
@@ -165,6 +136,35 @@ export default function ConsultancyPage() {
                   <div className={styles.locOverlay}>
                     <span className={styles.locName}><MapPin size={18} style={{ verticalAlign: 'middle', marginRight: '6px' }} /> {loc.name}</span>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Service Cards */}
+        <section className={styles.servicesSection}>
+          <div className="container">
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <span className="section-label">✦ What We Offer</span>
+              <h2 className="section-title">Our Consultancy Services</h2>
+              <p className="section-sub" style={{ marginInline: 'auto' }}>
+                From luxury pool villas to peaceful nature retreats — we curate the perfect stay for every occasion.
+              </p>
+            </div>
+            <div className={styles.grid}>
+              {consultancyServices.map((service, i) => (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className={styles.card}
+                >
+                  <div className={styles.cardIcon}>{service.icon}</div>
+                  <h3 className={styles.cardTitle}>{service.title}</h3>
+                  <p className={styles.cardText}>{service.text}</p>
                 </motion.div>
               ))}
             </div>
