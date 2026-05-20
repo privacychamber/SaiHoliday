@@ -1,6 +1,7 @@
 'use client';
-import { motion } from 'framer-motion';
-import { Home, Waves, Trees, MapPin, Phone, MessageSquare, ShieldCheck, Sparkles, Star, Mountain, Umbrella, Building } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Home, Waves, Trees, MapPin, Phone, MessageSquare, ShieldCheck, Sparkles, Star, Mountain, Umbrella, Building, X } from 'lucide-react';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import Enquiry from '@/components/Enquiry/Enquiry';
@@ -10,32 +11,38 @@ const consultancyServices = [
   {
     icon: <Waves size={32} />,
     title: 'Luxury & Private Pools',
-    text: 'Handpicked premium villas with crystal clear private pools for the ultimate staycation experience.'
+    text: 'Handpicked premium villas with crystal clear private pools for the ultimate staycation experience.',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80'
   },
   {
     icon: <Home size={32} />,
     title: 'Family Stays',
-    text: 'Spacious properties designed for reunions, celebrations, and quality time with your loved ones.'
+    text: 'Spacious properties designed for reunions, celebrations, and quality time with your loved ones.',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80'
   },
   {
     icon: <Trees size={32} />,
     title: 'Nature Escapes',
-    text: 'Offbeat retreats tucked away in lush greenery, offering peace and serenity away from city life.'
+    text: 'Offbeat retreats tucked away in lush greenery, offering peace and serenity away from city life.',
+    image: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=800&q=80'
   },
   {
     icon: <Mountain size={32} />,
     title: 'Hill Station Villas',
-    text: 'Wake up to misty mountains and cool breezes in our handpicked hilltop properties across India.'
+    text: 'Wake up to misty mountains and cool breezes in our handpicked hilltop properties across India.',
+    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80'
   },
   {
     icon: <Umbrella size={32} />,
     title: 'Beach & Coastal Stays',
-    text: 'Sun-kissed villas and beachfront properties along Goa, Alibaug, and the Konkan coast.'
+    text: 'Sun-kissed villas and beachfront properties along Goa, Alibaug, and the Konkan coast.',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'
   },
   {
     icon: <Building size={32} />,
     title: 'Corporate Retreats',
-    text: 'Offsite-ready properties with conference spaces, team activities, and catered dining options.'
+    text: 'Offsite-ready properties with conference spaces, team activities, and catered dining options.',
+    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80'
   }
 ];
 
@@ -58,10 +65,20 @@ const values = [
 ];
 
 export default function ConsultancyPage() {
+  const [activeService, setActiveService] = useState<typeof consultancyServices[number] | null>(null);
+
   const sendLocationEnquiry = (locationName: string) => {
     const WA = '919594541724';
     const msg = encodeURIComponent(
       `Hi Sai Holiday! 🙏\n\nI'm interested in booking a villa staycation in *${locationName}*.\n\nPlease share the best available options and details.`
+    );
+    window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+  };
+
+  const sendServiceEnquiry = (serviceTitle: string) => {
+    const WA = '919594541724';
+    const msg = encodeURIComponent(
+      `Hi Sai Holiday! 🙏\n\nI'm interested in your *${serviceTitle}* staycation consultancy service.\n\nPlease share more details and recommend some options.`
     );
     window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
   };
@@ -170,6 +187,8 @@ export default function ConsultancyPage() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
                   className={styles.card}
+                  onClick={() => setActiveService(service)}
+                  style={{ cursor: 'pointer' }}
                 >
                   <div className={styles.cardIcon}>{service.icon}</div>
                   <h3 className={styles.cardTitle}>{service.title}</h3>
@@ -233,6 +252,46 @@ export default function ConsultancyPage() {
         </section>
       </main>
       <Footer />
+
+      {/* Modal Popup */}
+      <AnimatePresence>
+        {activeService && (
+          <div className={styles.modalOverlay} onClick={() => setActiveService(null)}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className={styles.modalContent}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className={styles.modalClose} onClick={() => setActiveService(null)}>
+                <X size={20} />
+              </button>
+              
+              <div className={styles.modalImageArea}>
+                <img src={activeService.image} alt={activeService.title} className={styles.modalImg} />
+              </div>
+              
+              <div className={styles.modalBody}>
+                <span className={styles.modalLabel}>✦ Consultancy Detail</span>
+                <h3 className={styles.modalTitle}>{activeService.title}</h3>
+                <p className={styles.modalText}>{activeService.text}</p>
+                
+                <div className={styles.modalCta}>
+                  <button
+                    className="btn btn-primary"
+                    style={{ width: '100%', gap: '0.65rem' }}
+                    onClick={() => sendServiceEnquiry(activeService.title)}
+                  >
+                    <MessageSquare size={18} /> Book Stay via WhatsApp
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
