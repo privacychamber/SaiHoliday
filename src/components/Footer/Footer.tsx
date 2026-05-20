@@ -29,8 +29,8 @@ export default function Footer() {
           </p>
           <div className={styles.socials}>
             <a href="#" aria-label="Instagram" className={styles.social}>📸</a>
-            <a href="#" aria-label="Facebook" className={styles.social}>📘</a>
-            <a href="#" aria-label="YouTube" className={styles.social}>🎬</a>
+            <a href="#" aria-label="Facebook" className={styles.social}>👍</a>
+            <a href="#" aria-label="YouTube" className={styles.social}>▶️</a>
             <a href="https://wa.me/919594541724" aria-label="WhatsApp" className={styles.social}>💬</a>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function Footer() {
             <li><a href="tel:+919594541724" className={styles.link}>📞 +91 95945 41724</a></li>
             <li><a href="mailto:info@saiholiday.in" className={styles.link}>✉️ info@saiholiday.in</a></li>
             <li><span className={styles.link}>🕐 Mon–Sat, 9 AM – 8 PM</span></li>
-            <li><span className={styles.link}>📍 [Your Office Address]</span></li>
+            <li><span className={styles.link}>📍 Mumbai, Maharashtra</span></li>
           </ul>
           <a
             href="https://wa.me/919594541724?text=Hi Sai Holiday!"
