@@ -58,6 +58,14 @@ const values = [
 ];
 
 export default function ConsultancyPage() {
+  const sendLocationEnquiry = (locationName: string) => {
+    const WA = '919594541724';
+    const msg = encodeURIComponent(
+      `Hi Sai Holiday! 🙏\n\nI'm interested in booking a villa staycation in *${locationName}*.\n\nPlease share the best available options and details.`
+    );
+    window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
+  };
+
   return (
     <>
       <Navbar />
@@ -131,6 +139,7 @@ export default function ConsultancyPage() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.06 }}
                   className={styles.locCard}
+                  onClick={() => sendLocationEnquiry(loc.name)}
                 >
                   <img src={loc.image} alt={loc.name} className={styles.locImg} />
                   <div className={styles.locOverlay}>
