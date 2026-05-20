@@ -37,7 +37,7 @@ export default function Navbar() {
           <Link href="/" className={styles.logo}>
             <span className={styles.logoIcon}>✦</span>
             <span>
-              <span className={styles.logoMain}>Sai Holiday</span>
+              <span className={styles.logoMain}>Sai Holiday&apos;s</span>
               <span className={styles.logoSub}>Your World, Your Way</span>
             </span>
           </Link>
