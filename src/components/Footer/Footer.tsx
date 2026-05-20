@@ -1,13 +1,14 @@
 'use client';
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 const destinations = ['Kashmir', 'Manali', 'Goa', 'Kerala', 'Bali', 'Dubai', 'Maldives', 'Switzerland', 'Paris', 'Singapore'];
 const quickLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Packages', href: '#packages' },
+  { label: 'Packages', href: '/#packages' },
   { label: 'Flights', href: '/flight' },
   { label: 'Consultancy', href: '/consultancy' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export default function Footer() {
@@ -59,7 +60,7 @@ export default function Footer() {
           <h4 className={styles.colTitle}>Quick Links</h4>
           <ul className={styles.list}>
             {quickLinks.map((l) => (
-              <li key={l.label}><a href={l.href} className={styles.link}>{l.label}</a></li>
+              <li key={l.label}><Link href={l.href} className={styles.link}>{l.label}</Link></li>
             ))}
           </ul>
         </div>
@@ -69,7 +70,7 @@ export default function Footer() {
           <h4 className={styles.colTitle}>Popular Destinations</h4>
           <ul className={styles.list}>
             {destinations.map((d) => (
-              <li key={d}><a href="#packages" className={styles.link}>{d}</a></li>
+              <li key={d}><Link href="/#packages" className={styles.link}>{d}</Link></li>
             ))}
           </ul>
         </div>

@@ -21,7 +21,25 @@ function HeroForm() {
   const [phone, setPhone] = useState('');
   const [dest, setDest] = useState('');
   const [date, setDate] = useState('');
+  const [dateType, setDateType] = useState('text');
   const [sent, setSent] = useState(false);
+
+  const formatDateForDisplay = (dateStr: string) => {
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length === 3 && parts[0].length === 4) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return dateStr;
+  };
+
+  const parseDateFromDisplay = (displayStr: string) => {
+    const parts = displayStr.split('-');
+    if (parts.length === 3 && parts[2].length === 4) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return displayStr;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,7 +67,10 @@ function HeroForm() {
     );
     window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
     
-    setTimeout(() => setSent(false), 4000);
+    setTimeout(() => {
+      setSent(false);
+      setDate('');
+    }, 4000);
   };
 
   return (
@@ -75,7 +96,18 @@ function HeroForm() {
       </div>
       <div className={styles.field}>
         <label htmlFor="hero-date">Travel Date (approx)</label>
-        <input id="hero-date" type="month" value={date} onChange={e => setDate(e.target.value)} />
+        <input
+          id="hero-date"
+          type={dateType}
+          placeholder="dd-mm-yyyy"
+          onFocus={() => setDateType('date')}
+          onBlur={() => setDateType('text')}
+          value={dateType === 'date' ? date : formatDateForDisplay(date)}
+          onChange={e => {
+            const val = e.target.value;
+            setDate(dateType === 'date' ? val : parseDateFromDisplay(val));
+          }}
+        />
       </div>
       <button type="submit" className={`btn btn-primary ${styles.formBtn}`}>
         {sent ? '✅ Opening WhatsApp…' : 'Get My Quote →'}
