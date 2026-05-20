@@ -1,7 +1,28 @@
 'use client';
+import { useState } from 'react';
 import styles from './Enquiry.module.css';
 
 export default function Enquiry() {
+  const [travelDate, setTravelDate] = useState('');
+  const [dateType, setDateType] = useState('text');
+
+  const formatDateForDisplay = (dateStr: string) => {
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length === 3 && parts[0].length === 4) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return dateStr;
+  };
+
+  const parseDateFromDisplay = (displayStr: string) => {
+    const parts = displayStr.split('-');
+    if (parts.length === 3 && parts[2].length === 4) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return displayStr;
+  };
+
   return (
     <section className={styles.section} id="contact">
       <div className={styles.bgOverlay} />
@@ -66,7 +87,7 @@ export default function Enquiry() {
               phone: (document.getElementById('eq-phone') as HTMLInputElement).value,
               email: (document.getElementById('eq-email') as HTMLInputElement).value,
               destination: (document.getElementById('eq-dest') as HTMLSelectElement).value,
-              travel_date: (document.getElementById('eq-date') as HTMLInputElement).value,
+              travel_date: travelDate,
               pax: (document.getElementById('eq-pax') as HTMLInputElement).value,
               message: (document.getElementById('eq-msg') as HTMLTextAreaElement).value,
               type: 'general'
@@ -80,6 +101,7 @@ export default function Enquiry() {
               });
               if (res.ok) {
                 alert('✅ Enquiry sent successfully! Our experts will contact you soon.');
+                setTravelDate('');
                 (e.target as HTMLFormElement).reset();
               }
             } catch (err) {
@@ -118,7 +140,18 @@ export default function Enquiry() {
               </div>
               <div className={styles.field}>
                 <label htmlFor="eq-date">Travel Date (approx)</label>
-                <input id="eq-date" type="month" />
+                <input
+                  id="eq-date"
+                  type={dateType}
+                  placeholder="dd-mm-yyyy"
+                  onFocus={() => setDateType('date')}
+                  onBlur={() => setDateType('text')}
+                  value={dateType === 'date' ? travelDate : formatDateForDisplay(travelDate)}
+                  onChange={e => {
+                    const val = e.target.value;
+                    setTravelDate(dateType === 'date' ? val : parseDateFromDisplay(val));
+                  }}
+                />
               </div>
             </div>
             <div className={styles.field}>

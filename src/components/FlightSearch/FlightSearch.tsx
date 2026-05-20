@@ -28,6 +28,26 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
   const [isSearching, setIsSearching] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
+  const [depType, setDepType] = useState('text');
+  const [retType, setRetType] = useState('text');
+
+  const formatDateForDisplay = (dateStr: string) => {
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length === 3 && parts[0].length === 4) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return dateStr;
+  };
+
+  const parseDateFromDisplay = (displayStr: string) => {
+    const parts = displayStr.split('-');
+    if (parts.length === 3 && parts[2].length === 4) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return displayStr;
+  };
+
   const totalPax = adults + children + infants;
 
   const handleSwap = () => {
@@ -126,9 +146,15 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
           <div className={styles.field}>
             <label><Calendar size={14} /> Departure</label>
             <input
-              type="date"
-              value={departure}
-              onChange={e => setDeparture(e.target.value)}
+              type={depType}
+              placeholder="dd-mm-yyyy"
+              onFocus={() => setDepType('date')}
+              onBlur={() => setDepType('text')}
+              value={depType === 'date' ? departure : formatDateForDisplay(departure)}
+              onChange={e => {
+                const val = e.target.value;
+                setDeparture(depType === 'date' ? val : parseDateFromDisplay(val));
+              }}
               min={new Date().toISOString().split('T')[0]}
               required
             />
@@ -138,9 +164,15 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
             <div className={styles.field}>
               <label><Calendar size={14} /> Return</label>
               <input
-                type="date"
-                value={returnDate}
-                onChange={e => setReturnDate(e.target.value)}
+                type={retType}
+                placeholder="dd-mm-yyyy"
+                onFocus={() => setRetType('date')}
+                onBlur={() => setRetType('text')}
+                value={retType === 'date' ? returnDate : formatDateForDisplay(returnDate)}
+                onChange={e => {
+                  const val = e.target.value;
+                  setReturnDate(retType === 'date' ? val : parseDateFromDisplay(val));
+                }}
                 min={departure || new Date().toISOString().split('T')[0]}
                 required
               />

@@ -13,6 +13,25 @@ interface ServiceModalProps {
 export default function ServiceModal({ isOpen, onClose, service }: ServiceModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [travelDate, setTravelDate] = useState('');
+  const [dateType, setDateType] = useState('text');
+
+  const formatDateForDisplay = (dateStr: string) => {
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length === 3 && parts[0].length === 4) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return dateStr;
+  };
+
+  const parseDateFromDisplay = (displayStr: string) => {
+    const parts = displayStr.split('-');
+    if (parts.length === 3 && parts[2].length === 4) {
+      return `${parts[2]}-${parts[1]}-${parts[0]}`;
+    }
+    return displayStr;
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,6 +40,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     data.type = service.toLowerCase().replace(/[\s()]/g, '_');
+    data.travel_date = travelDate;
 
     try {
       const res = await fetch('/php-backend/api/enquiry.php', {
@@ -33,6 +53,7 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
         setIsSuccess(true);
         setTimeout(() => {
           setIsSuccess(false);
+          setTravelDate('');
           onClose();
         }, 3000);
       }
@@ -54,7 +75,19 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
             </div>
             <div className={styles.field}>
               <label>Travel Date</label>
-              <input type="date" name="travel_date" required />
+              <input
+                type={dateType}
+                name="travel_date"
+                placeholder="dd-mm-yyyy"
+                onFocus={() => setDateType('date')}
+                onBlur={() => setDateType('text')}
+                value={dateType === 'date' ? travelDate : formatDateForDisplay(travelDate)}
+                onChange={e => {
+                  const val = e.target.value;
+                  setTravelDate(dateType === 'date' ? val : parseDateFromDisplay(val));
+                }}
+                required
+              />
             </div>
             <div className={styles.field}>
               <label>Class</label>
@@ -81,7 +114,19 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
             </div>
             <div className={styles.field}>
               <label>Check-in Date</label>
-              <input type="date" name="travel_date" required />
+              <input
+                type={dateType}
+                name="travel_date"
+                placeholder="dd-mm-yyyy"
+                onFocus={() => setDateType('date')}
+                onBlur={() => setDateType('text')}
+                value={dateType === 'date' ? travelDate : formatDateForDisplay(travelDate)}
+                onChange={e => {
+                  const val = e.target.value;
+                  setTravelDate(dateType === 'date' ? val : parseDateFromDisplay(val));
+                }}
+                required
+              />
             </div>
             <div className={styles.field}>
               <label>Number of Nights</label>
@@ -106,7 +151,19 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
             </div>
             <div className={styles.field}>
               <label>Tentative Travel Date</label>
-              <input type="date" name="travel_date" required />
+              <input
+                type={dateType}
+                name="travel_date"
+                placeholder="dd-mm-yyyy"
+                onFocus={() => setDateType('date')}
+                onBlur={() => setDateType('text')}
+                value={dateType === 'date' ? travelDate : formatDateForDisplay(travelDate)}
+                onChange={e => {
+                  const val = e.target.value;
+                  setTravelDate(dateType === 'date' ? val : parseDateFromDisplay(val));
+                }}
+                required
+              />
             </div>
             <div className={styles.field}>
               <label>Number of Applicants</label>
