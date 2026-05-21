@@ -46,11 +46,11 @@ export default function Enquiry() {
                 <span>+91 95945 41724</span>
               </div>
             </a>
-            <a href="mailto:info@saiholiday.in" className={styles.infoItem}>
+            <a href="mailto:Jdvilla2026@gmail.com" className={styles.infoItem}>
               <span className={styles.infoIcon}>✉️</span>
               <div>
                 <strong>Email Us</strong>
-                <span>info@saiholiday.in</span>
+                <span>Jdvilla2026@gmail.com</span>
               </div>
             </a>
             <div className={styles.infoItem}>

@@ -65,13 +65,13 @@ export default function PaymentPage() {
                   <div className={styles.qrCorner} data-pos="tr" />
                   <div className={styles.qrCorner} data-pos="bl" />
                   <div className={styles.qrCorner} data-pos="br" />
-                  <Image
-                    src="/images/payment-qr.png"
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/payment-qr.png`}
                     alt="Sai Holiday UPI QR Code — Scan to Pay — Jyoti Dogra"
                     width={320}
                     height={400}
                     className={styles.qrImage}
-                    priority
                   />
                 </div>
 
@@ -181,8 +181,8 @@ export default function PaymentPage() {
                     <h3 className={styles.afterTitle}>After Payment</h3>
                     <p className={styles.afterDesc}>
                       Please share your payment screenshot on WhatsApp so we can confirm your booking instantly. You can also email us at{' '}
-                      <a href="mailto:info@saiholiday.in" className={styles.afterLink}>
-                        info@saiholiday.in
+                      <a href="mailto:Jdvilla2026@gmail.com" className={styles.afterLink}>
+                        Jdvilla2026@gmail.com
                       </a>.
                     </p>
                     <div className={styles.afterBtns}>
@@ -194,7 +194,7 @@ export default function PaymentPage() {
                       >
                         💬 Share on WhatsApp
                       </a>
-                      <a href="mailto:info@saiholiday.in" className="btn btn-ghost-gold">
+                      <a href="mailto:Jdvilla2026@gmail.com" className="btn btn-ghost-gold">
                         ✉ Send Email
                       </a>
                     </div>

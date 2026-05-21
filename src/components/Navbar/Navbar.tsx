@@ -29,7 +29,7 @@ export default function Navbar() {
       {/* Top utility bar */}
       <div className={styles.utilityBar}>
         <div className={`container ${styles.utilityInner}`}>
-          <span>✉ info@saiholiday.in</span>
+          <span>✉ Jdvilla2026@gmail.com</span>
           <span>📞 +91 95945 41724 &nbsp;|&nbsp; Mon–Sat 9 AM – 8 PM</span>
         </div>
       </div>

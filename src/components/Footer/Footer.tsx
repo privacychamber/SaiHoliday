@@ -80,7 +80,7 @@ export default function Footer() {
           <h4 className={styles.colTitle}>Contact Us</h4>
           <ul className={styles.contactList}>
             <li><a href="tel:+919594541724" className={styles.link}>📞 +91 95945 41724</a></li>
-            <li><a href="mailto:info@saiholiday.in" className={styles.link}>✉️ info@saiholiday.in</a></li>
+            <li><a href="mailto:Jdvilla2026@gmail.com" className={styles.link}>✉️ Jdvilla2026@gmail.com</a></li>
             <li><span className={styles.link}>🕐 Mon–Sat, 9 AM – 8 PM</span></li>
             <li><span className={styles.link}>📍 Mumbai, Maharashtra</span></li>
           </ul>
