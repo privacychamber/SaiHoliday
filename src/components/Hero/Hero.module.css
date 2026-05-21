@@ -214,3 +214,28 @@
   .formCard { max-width: 100%; }
   .scrollCue { display: none; }
 }
+
+/* ── Dark Mode: form card adapts to dark surface ── */
+:global([data-theme="dark"]) .formCard {
+  background: #0D1B2E;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+:global([data-theme="dark"]) .formTitle { color: #EEF2F7; }
+:global([data-theme="dark"]) .formSub { color: #7A95AE; }
+:global([data-theme="dark"]) .field label { color: #B0C4D8; }
+:global([data-theme="dark"]) .field input,
+:global([data-theme="dark"]) .field select {
+  background: #121F33;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #EEF2F7;
+}
+:global([data-theme="dark"]) .field input::placeholder { color: #4A6070; }
+:global([data-theme="dark"]) .field input:focus,
+:global([data-theme="dark"]) .field select:focus {
+  background: #0D1B2E;
+  border-color: var(--gold);
+}
+:global([data-theme="dark"]) .field select option {
+  background: #0D1B2E;
+  color: #EEF2F7;
+}

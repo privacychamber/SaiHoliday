@@ -182,7 +182,7 @@
 .ctaInner h2 {
   font-family: var(--font-playfair);
   font-size: 1.75rem;
-  color: var(--white);
+  color: #FFFFFF;
   font-weight: 700;
 }
 .ctaInner p {

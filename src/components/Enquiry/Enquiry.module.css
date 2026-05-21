@@ -123,3 +123,31 @@
 @media (max-width: 500px) {
   .row { grid-template-columns: 1fr; }
 }
+
+/* ── Dark Mode: form card adapts to dark surface ── */
+:global([data-theme="dark"]) .formCard {
+  background: #0D1B2E;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+}
+:global([data-theme="dark"]) .formTitle { color: #EEF2F7; }
+:global([data-theme="dark"]) .field label { color: #B0C4D8; }
+:global([data-theme="dark"]) .field input,
+:global([data-theme="dark"]) .field select,
+:global([data-theme="dark"]) .field textarea {
+  background: #121F33;
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #EEF2F7;
+}
+:global([data-theme="dark"]) .field input::placeholder,
+:global([data-theme="dark"]) .field textarea::placeholder { color: #4A6070; }
+:global([data-theme="dark"]) .field input:focus,
+:global([data-theme="dark"]) .field select:focus,
+:global([data-theme="dark"]) .field textarea:focus {
+  background: #0D1B2E;
+  border-color: var(--gold);
+}
+:global([data-theme="dark"]) .field select option {
+  background: #0D1B2E;
+  color: #EEF2F7;
+}
+
