@@ -38,11 +38,12 @@ export default function Navbar() {
         <div className={`container ${styles.inner}`}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>✦</span>
-            <span>
-              <span className={styles.logoMain}>Sai Holiday&apos;s</span>
-              <span className={styles.logoSub}>Your World, Your Way</span>
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/logo.png`}
+              alt="Sai Holiday Logo"
+              className={styles.logoImg}
+            />
           </Link>
 
           {/* Desktop Nav */}

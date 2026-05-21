@@ -1,6 +1,6 @@
 /* ============================================================
    SAI HOLIDAY — GLOBAL DESIGN SYSTEM
-   Palette: White & Gold Edition — Premium Luxury
+   Palette: Logo Edition — Sunset Orange, Ocean Teal & Golden Sun
    Default: Premium White (Light) Theme
    ============================================================ */
 
@@ -10,68 +10,68 @@
 :root {
   color-scheme: light;
 
-  /* ── White & Gold Brand Palette ── */
-  /* Deep Ink — used ONLY for dark readable text, never backgrounds */
-  --sapphire:         #1A1200;
-  --sapphire-mid:     #3A2E00;
+  /* ── Logo-matched Brand Palette ── */
+  /* Deep Navy — logo text color, readable ink */
+  --sapphire:         #0D2A4A;
+  --sapphire-mid:     #1A3E60;
 
-  /* Rich Gold (primary accent — CTAs, icons, highlights, sections) */
-  --gold:             #C9860A;
-  --gold-mid:         #A86D06;
-  --gold-light:       #E0A020;
+  /* Sunset Orange — dominant logo sky/sun color */
+  --gold:             #E8741A;
+  --gold-mid:         #C9600E;
+  --gold-light:       #F09040;
 
-  /* Warm Champagne (secondary accent) */
-  --teal:             #B8860B;
-  --teal-light:       #D4A017;
+  /* Ocean Teal — logo wave color */
+  --teal:             #1A9BAD;
+  --teal-light:       #23B5C9;
 
-  /* Bright Gold (decorative / stat numbers) */
-  --amber:            #E8B030;
-  --amber-light:      #F5C842;
+  /* Golden Sun — logo sun rays */
+  --amber:            #F5C030;
+  --amber-light:      #FFD966;
 
   /* Neutrals */
-  --ink:              #1A1200;
-  --muted:            #6B5E3A;
+  --ink:              #0D2A4A;
+  --muted:            #5A6B7A;
   --white:            #FFFFFF;
 
-  /* ── Section accent bg — GOLD (premium, no dark navy, no orange) ── */
-  --section-dark-bg:   #C9860A;
-  --section-dark-mid:  #A86D06;
+  /* ── Section accent bg — Sunset Orange (matches logo) ── */
+  --section-dark-bg:   #E8741A;
+  --section-dark-mid:  #C9600E;
 
   /* ── Light-theme surface tokens ── */
-  --bg-page:         #FFFDF7;
+  --bg-page:         #F8F9FA;
   --bg-card:         #FFFFFF;
-  --bg-card-alt:     #FFFBEF;
-  --bg-section-alt:  #FFF8E1;
-  --border-subtle:   rgba(201, 134, 10, 0.18);
-  --border-card:     rgba(201, 134, 10, 0.12);
+  --bg-card-alt:     #FEF5EC;
+  --bg-section-alt:  #FFF8F0;
+  --border-subtle:   rgba(232, 116, 26, 0.14);
+  --border-card:     rgba(13, 42, 74, 0.08);
 
   /* ── Text tokens ── */
-  --text-primary:    #1A1200;
-  --text-secondary:  #3A2E00;
-  --text-muted:      #6B5E3A;
+  --text-primary:    #0D2A4A;
+  --text-secondary:  #1A3E60;
+  --text-muted:      #5A6B7A;
   --text-on-dark:    #FFFFFF;
 
   /* ── Navbar tokens ── */
   --nav-bg:          rgba(255, 255, 255, 0.97);
   --nav-bg-scrolled: rgba(255, 255, 255, 0.93);
-  --nav-border:      rgba(201, 134, 10, 0.15);
-  --nav-shadow:      0 2px 24px rgba(201, 134, 10, 0.1);
-  --nav-link-color:  #3A2E00;
-  --nav-link-hover:  #C9860A;
-  --nav-logo-main:   #1A1200;
-  --nav-utility-bg:  #C9860A;
+  --nav-border:      rgba(232, 116, 26, 0.15);
+  --nav-shadow:      0 2px 24px rgba(13, 42, 74, 0.10);
+  --nav-link-color:  #1A3E60;
+  --nav-link-hover:  #E8741A;
+  --nav-logo-main:   #0D2A4A;
+  --nav-utility-bg:  #0D2A4A;
   --nav-utility-fg:  #FFFFFF;
-  --hamburger-color: #1A1200;
-  --mobile-menu-bg:  #FFFDF7;
+  --hamburger-color: #0D2A4A;
+  --mobile-menu-bg:  #FFFFFF;
 
   /* ── Glass Surface ── */
   --glass-light:   rgba(255, 255, 255, 0.80);
-  --glass-dark:    rgba(26, 18, 0, 0.65);
-  --glass-border:  rgba(201, 134, 10, 0.25);
+  --glass-dark:    rgba(13, 42, 74, 0.65);
+  --glass-border:  rgba(232, 116, 26, 0.22);
 
   /* ── Linen (legacy compat) ── */
-  --linen:         #FFFDF7;
-  --linen-dark:    #F5EDCE;
+  --linen:         #F8F9FA;
+  --linen-dark:    #EDE8E2;
 
   /* ── Fonts ── */
   --font-playfair: 'Playfair Display', Georgia, serif;
@@ -88,9 +88,9 @@
   --t-slow:  0.55s var(--ease-smooth);
 
   /* ── Shadows ── */
-  --shadow-card:  0 4px 24px rgba(201, 134, 10, 0.10);
-  --shadow-hover: 0 14px 44px rgba(201, 134, 10, 0.22);
-  --shadow-gold:  0 0 0 3px rgba(201, 134, 10, 0.35);
+  --shadow-card:  0 4px 24px rgba(13, 42, 74, 0.09);
+  --shadow-hover: 0 14px 44px rgba(13, 42, 74, 0.18);
+  --shadow-gold:  0 0 0 3px rgba(232, 116, 26, 0.35);
 }
 
 /* ─── Dark Theme ─── */
