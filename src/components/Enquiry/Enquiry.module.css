@@ -59,11 +59,18 @@
 .ctaBtns { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /* Form */
-.formCard { padding: 2.5rem; border-radius: 24px; }
+.formCard {
+  padding: 2.5rem;
+  border-radius: 24px;
+  /* Solid white — fully readable on dark photo bg */
+  background: #FFFFFF;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+}
 .formTitle {
   font-family: var(--font-playfair);
   font-size: 1.5rem;
-  color: var(--white);
+  /* Dark readable text on white card */
+  color: #0D2A4A;
   margin-bottom: 1.5rem;
 }
 
@@ -75,8 +82,9 @@
 .field label {
   font-family: var(--font-dm);
   font-size: 0.76rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+  /* Dark readable label on white card */
+  color: #0D2A4A;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -85,24 +93,26 @@
 .field textarea {
   padding: 0.7rem 1rem;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.08);
-  color: var(--white);
+  border: 1.5px solid #D1D9E0;
+  /* Solid light bg — always readable */
+  background: #F7F8FA;
+  color: #0B1D30;
   font-family: var(--font-inter);
   font-size: 0.9rem;
   outline: none;
   resize: vertical;
-  transition: border-color var(--t-fast), background var(--t-fast);
+  transition: border-color var(--t-fast), background var(--t-fast), box-shadow var(--t-fast);
 }
 .field input::placeholder,
-.field textarea::placeholder { color: rgba(255,255,255,0.3); }
+.field textarea::placeholder { color: #9AACBA; }
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
   border-color: var(--gold);
-  background: rgba(255,255,255,0.12);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(240, 90, 26, 0.15);
 }
-.field select option { background: var(--sapphire-mid); }
+.field select option { background: #FFFFFF; color: #0B1D30; }
 
 .submitBtn { width: 100%; justify-content: center; margin-top: 0.5rem; }
 
