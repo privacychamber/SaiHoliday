@@ -31,11 +31,11 @@
   color: var(--sapphire);
 }
 .active {
-  background: var(--sapphire);
-  border-color: var(--sapphire);
-  color: var(--gold) !important;
+  background: var(--section-dark-bg);
+  border-color: var(--section-dark-bg);
+  color: #FFFFFF !important;
   font-weight: 700;
-  box-shadow: 0 4px 16px rgba(10,22,40,0.2);
+  box-shadow: 0 4px 16px rgba(240,90,26,0.3);
 }
 .pillIcon { font-size: 1.1rem; }
 

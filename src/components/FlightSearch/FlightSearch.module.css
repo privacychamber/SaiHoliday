@@ -112,8 +112,8 @@
 }
 
 .swapBtn:hover {
-  background: var(--sapphire);
-  border-color: var(--sapphire);
+  background: var(--section-dark-bg);
+  border-color: var(--section-dark-bg);
   color: var(--white);
   transform: rotate(180deg);
 }
@@ -200,9 +200,9 @@
 }
 
 .counter button:hover {
-  background: var(--sapphire);
+  background: var(--section-dark-bg);
   color: white;
-  border-color: var(--sapphire);
+  border-color: var(--section-dark-bg);
 }
 
 .counter span {
@@ -217,7 +217,7 @@
   width: 100%;
   margin-top: 0.75rem;
   padding: 0.5rem;
-  background: var(--sapphire);
+  background: var(--section-dark-bg);
   color: white;
   border: none;
   border-radius: 8px;

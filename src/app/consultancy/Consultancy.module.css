@@ -90,7 +90,7 @@
 
 /* Locations */
 .locations {
-  background: var(--sapphire);
+  background: var(--section-dark-bg);
   padding-block: var(--section-py);
 }
 
@@ -251,7 +251,7 @@
   transition: all var(--t-fast);
 }
 .modalClose:hover {
-  background: var(--sapphire);
+  background: var(--gold);
   color: var(--white);
 }
 

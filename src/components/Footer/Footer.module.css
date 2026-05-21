@@ -1,6 +1,6 @@
 .footer {
-  background: var(--sapphire);
-  color: rgba(255,255,255,0.75);
+  background: var(--section-dark-bg);
+  color: rgba(255,255,255,0.92);
 }
 
 .grid {
@@ -13,19 +13,20 @@
 /* Brand column */
 .brand { display: flex; flex-direction: column; gap: 1rem; }
 .logo { display: flex; align-items: center; gap: 0.6rem; }
-.logoIcon { font-size: 1.6rem; color: var(--gold); }
+.logoIcon { font-size: 1.6rem; color: #FFFFFF; }
 .logoMain {
   display: block;
   font-family: var(--font-playfair);
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--white);
+  color: #FFFFFF;
 }
 .logoSub {
   display: block;
   font-family: var(--font-inter);
   font-size: 0.62rem;
-  color: var(--gold);
+  /* White on orange — fully readable */
+  color: rgba(255,255,255,0.85);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -33,30 +34,33 @@
   font-family: var(--font-inter);
   font-size: 0.85rem;
   line-height: 1.75;
-  color: rgba(255,255,255,0.6);
+  /* Boosted from 0.6 → 0.9 */
+  color: rgba(255,255,255,0.9);
 }
 .socials { display: flex; gap: 0.75rem; }
 .social {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
   transition: background var(--t-fast), border-color var(--t-fast);
   text-decoration: none;
+  color: #FFFFFF;
 }
-.social:hover { background: rgba(0, 167, 157, 0.15); border-color: var(--gold); }
+.social:hover { background: rgba(255,255,255,0.28); border-color: rgba(255,255,255,0.7); }
 
 /* Columns */
 .colTitle {
   font-family: var(--font-dm);
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--gold);
+  /* White on orange — readable */
+  color: #FFFFFF;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
@@ -66,17 +70,18 @@
 .link {
   font-family: var(--font-inter);
   font-size: 0.88rem;
-  color: rgba(255,255,255,0.65);
+  /* Boosted from 0.65 → 0.92 */
+  color: rgba(255,255,255,0.92);
   text-decoration: none;
   transition: color var(--t-fast);
 }
-.link:hover { color: var(--gold); }
+.link:hover { color: #FFFFFF; text-decoration: underline; }
 
 .waBtn { font-size: 0.85rem; padding: 0.65rem 1.4rem; }
 
 /* Bottom bar */
 .bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(255,255,255,0.2);
   padding-block: 1.25rem;
 }
 .bottom .container {
@@ -89,7 +94,8 @@
 .bottom span {
   font-family: var(--font-inter);
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.4);
+  /* Boosted from 0.4 → 0.85 */
+  color: rgba(255,255,255,0.85);
 }
 .bottomLinks {
   display: flex;
@@ -98,10 +104,11 @@
 .bottomLinks a {
   font-family: var(--font-inter);
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.4);
+  /* Boosted from 0.4 → 0.85 */
+  color: rgba(255,255,255,0.85);
   transition: color var(--t-fast);
 }
-.bottomLinks a:hover { color: var(--gold); }
+.bottomLinks a:hover { color: #FFFFFF; text-decoration: underline; }
 
 @media (max-width: 1000px) {
   .grid { grid-template-columns: 1fr 1fr; }

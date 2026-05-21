@@ -169,7 +169,7 @@
 
 /* CTA Strip */
 .ctaStrip {
-  background: var(--sapphire);
+  background: var(--section-dark-bg);
   padding-block: 3rem;
 }
 .ctaInner {

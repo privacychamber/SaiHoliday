@@ -1,48 +1,158 @@
 /* ============================================================
    SAI HOLIDAY — GLOBAL DESIGN SYSTEM
-   Palette A: Tropical Shore (Teal, Navy & Sunset Orange)
+   Palette: Poster Edition — Navy, Sunset Orange & Ocean Teal
+   Default: Premium White (Light) Theme
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-/* ─── CSS Custom Properties ─── */
+/* ─── Light (White) Theme — DEFAULT ─── */
 :root {
-  /* Brand Colors */
-  --sapphire: #082C40;
-  --sapphire-mid: #133E57;
-  --gold: #00A79D;
-  --gold-mid: #0C978E;
-  --gold-light: #33BBB3;
-  --amber: #F7931E;
-  --linen: #FAF7F2;
-  --linen-dark: #F0EBE1;
-  --ink: #061D2B;
-  --muted: #6B7A8D;
-  --white: #FFFFFF;
+  color-scheme: light;
 
-  /* Glass Surface */
-  --glass-light: rgba(255, 255, 255, 0.12);
-  --glass-dark: rgba(10, 22, 40, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  /* ── Poster Brand Palette ── */
+  /* Deep Navy — used ONLY for dark readable text, never backgrounds */
+  --sapphire:         #0D2A4A;
+  --sapphire-mid:     #1A3E60;
 
-  /* Fonts */
+  /* Sunset Orange (primary accent — CTAs, icons, highlights) */
+  --gold:             #F05A1A;
+  --gold-mid:         #D84E0F;
+  --gold-light:       #F47A48;
+
+  /* Ocean Teal (secondary accent — location badges, links) */
+  --teal:             #0E7B8C;
+  --teal-light:       #1A9BAD;
+
+  /* Warm Gold (decorative / stat numbers) */
+  --amber:            #D4960A;
+  --amber-light:      #F0B429;
+
+  /* Neutrals */
+  --ink:              #0B1D30;
+  --muted:            #5A6B7A;
+  --white:            #FFFFFF;
+
+  /* ── Section accent bg — ORANGE (no dark navy) ── */
+  --section-dark-bg:   #F05A1A;
+  --section-dark-mid:  #D84E0F;
+
+  /* ── Light-theme surface tokens ── */
+  --bg-page:         #F7F8FA;
+  --bg-card:         #FFFFFF;
+  --bg-card-alt:     #FEF4EF;
+  --bg-section-alt:  #FFF8F5;
+  --border-subtle:   rgba(240, 90, 26, 0.14);
+  --border-card:     rgba(13, 42, 74, 0.08);
+
+  /* ── Text tokens ── */
+  --text-primary:    #0B1D30;
+  --text-secondary:  #1A3E60;
+  --text-muted:      #5A6B7A;
+  --text-on-dark:    #FFFFFF;
+
+  /* ── Navbar tokens ── */
+  --nav-bg:          rgba(255, 255, 255, 0.97);
+  --nav-bg-scrolled: rgba(255, 255, 255, 0.93);
+  --nav-border:      rgba(240, 90, 26, 0.15);
+  --nav-shadow:      0 2px 24px rgba(13, 42, 74, 0.1);
+  --nav-link-color:  #1A3E60;
+  --nav-link-hover:  #F05A1A;
+  --nav-logo-main:   #0D2A4A;
+  --nav-utility-bg:  #F05A1A;
+  --nav-utility-fg:  #FFFFFF;
+  --hamburger-color: #0D2A4A;
+  --mobile-menu-bg:  #FFF8F5;
+
+  /* ── Glass Surface ── */
+  --glass-light:   rgba(255, 255, 255, 0.75);
+  --glass-dark:    rgba(13, 42, 74, 0.65);
+  --glass-border:  rgba(240, 90, 26, 0.2);
+
+  /* ── Linen (legacy compat) ── */
+  --linen:         #F7F8FA;
+  --linen-dark:    #EDE8E2;
+
+  /* ── Fonts ── */
   --font-playfair: 'Playfair Display', Georgia, serif;
-  --font-dm: 'DM Sans', system-ui, sans-serif;
-  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-dm:       'DM Sans', system-ui, sans-serif;
+  --font-inter:    'Inter', system-ui, sans-serif;
 
-  /* Spacing Scale */
+  /* ── Spacing ── */
   --section-py: clamp(4rem, 8vw, 7rem);
 
-  /* Transitions */
+  /* ── Transitions ── */
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --t-fast: 0.2s var(--ease-smooth);
-  --t-med: 0.35s var(--ease-smooth);
-  --t-slow: 0.55s var(--ease-smooth);
+  --t-fast:  0.2s var(--ease-smooth);
+  --t-med:   0.35s var(--ease-smooth);
+  --t-slow:  0.55s var(--ease-smooth);
+
+  /* ── Shadows ── */
+  --shadow-card:  0 4px 24px rgba(13, 42, 74, 0.09);
+  --shadow-hover: 0 14px 44px rgba(13, 42, 74, 0.18);
+  --shadow-gold:  0 0 0 3px rgba(240, 90, 26, 0.4);
+}
+
+/* ─── Dark Theme ─── */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surface tokens */
+  --bg-page:         #070F1A;
+  --bg-card:         #0D1B2E;
+  --bg-card-alt:     #121F33;
+  --bg-section-alt:  #0A1525;
+  --border-subtle:   rgba(240, 90, 26, 0.2);
+  --border-card:     rgba(255, 255, 255, 0.07);
+
+  /* Text tokens */
+  --text-primary:    #EEF2F7;
+  --text-secondary:  #B0C4D8;
+  --text-muted:      #7A95AE;
+  --text-on-dark:    #FFFFFF;
+
+  /* Navbar tokens */
+  --nav-bg:          rgba(7, 15, 26, 0.97);
+  --nav-bg-scrolled: rgba(7, 15, 26, 0.9);
+  --nav-border:      rgba(240, 90, 26, 0.18);
+  --nav-shadow:      0 2px 20px rgba(0, 0, 0, 0.5);
+  --nav-link-color:  rgba(255, 255, 255, 0.88);
+  --nav-link-hover:  #F47A48;
+  --nav-logo-main:   #FFFFFF;
+  --nav-utility-bg:  #040C16;
+  --nav-utility-fg:  rgba(255, 255, 255, 0.72);
+  --hamburger-color: #FFFFFF;
+  --mobile-menu-bg:  #070F1A;
+
+  /* Glass */
+  --glass-light:   rgba(255, 255, 255, 0.06);
+  --glass-dark:    rgba(7, 15, 26, 0.8);
+  --glass-border:  rgba(255, 255, 255, 0.09);
+
+  /* Linen compat */
+  --linen:         #070F1A;
+  --linen-dark:    #121F33;
 
   /* Shadows */
-  --shadow-card: 0 4px 24px rgba(10, 22, 40, 0.12);
-  --shadow-hover: 0 12px 40px rgba(10, 22, 40, 0.22);
-  --shadow-gold: 0 0 0 2px rgba(0, 167, 157, 0.55);
+  --shadow-card:  0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 14px 44px rgba(0, 0, 0, 0.6);
+
+  /* ── Legacy variable remaps (so existing component CSS adapts) ── */
+  --white:         #0D1B2E;
+  --ink:           #EEF2F7;
+  --muted:         #7A95AE;
+  /* --sapphire as heading text → light in dark mode */
+  --sapphire:      #C5D8E8;
+  --sapphire-mid:  #121F33;
+}
+
+/* ─── Base Body ─── */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--t-med), color var(--t-med);
 }
 
 /* ─── Reset ─── */
@@ -81,17 +191,9 @@ ul {
 }
 
 /* ─── Typography Utilities ─── */
-.font-playfair {
-  font-family: var(--font-playfair);
-}
-
-.font-dm {
-  font-family: var(--font-dm);
-}
-
-.font-inter {
-  font-family: var(--font-inter);
-}
+.font-playfair { font-family: var(--font-playfair); }
+.font-dm       { font-family: var(--font-dm); }
+.font-inter    { font-family: var(--font-inter); }
 
 /* ─── Layout ─── */
 .container {
@@ -120,23 +222,19 @@ ul {
   white-space: nowrap;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-}
+.btn:hover  { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
 
-.btn:active {
-  transform: translateY(0);
-}
-
+/* Primary — Sunset Orange (poster "BOOK NOW") */
 .btn-primary {
-  background: var(--gold);
-  color: var(--white); /* White text on teal buttons looks much cleaner and has higher contrast */
-  box-shadow: 0 4px 18px rgba(0, 167, 157, 0.35);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(240, 90, 26, 0.38);
 }
 
 .btn-primary:hover {
-  background: var(--gold-light);
-  box-shadow: 0 8px 28px rgba(0, 167, 157, 0.5);
+  background: linear-gradient(135deg, var(--gold-mid), var(--gold));
+  box-shadow: 0 8px 30px rgba(240, 90, 26, 0.52);
 }
 
 .btn-outline {
@@ -150,6 +248,7 @@ ul {
   border-color: var(--white);
 }
 
+/* Ghost — orange border */
 .btn-ghost-gold {
   background: transparent;
   color: var(--gold);
@@ -158,7 +257,19 @@ ul {
 
 .btn-ghost-gold:hover {
   background: var(--gold);
-  color: var(--sapphire);
+  color: #FFFFFF;
+}
+
+/* Teal variant */
+.btn-teal {
+  background: var(--teal);
+  color: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(14, 123, 140, 0.35);
+}
+
+.btn-teal:hover {
+  background: var(--teal-light);
+  box-shadow: 0 8px 28px rgba(14, 123, 140, 0.5);
 }
 
 /* ─── Section Headers ─── */
@@ -166,7 +277,7 @@ ul {
   display: inline-block;
   font-family: var(--font-dm);
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--gold);
@@ -178,7 +289,7 @@ ul {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--sapphire);
+  color: var(--text-primary);
 }
 
 .section-title-light {
@@ -188,7 +299,7 @@ ul {
 .section-sub {
   font-family: var(--font-inter);
   font-size: clamp(1rem, 1.5vw, 1.1rem);
-  color: var(--muted);
+  color: var(--text-muted);
   line-height: 1.8;
   max-width: 56ch;
   margin-top: 1rem;
@@ -219,25 +330,11 @@ ul {
   transform: translateY(0);
 }
 
-.reveal-delay-1 {
-  transition-delay: 0.1s;
-}
-
-.reveal-delay-2 {
-  transition-delay: 0.2s;
-}
-
-.reveal-delay-3 {
-  transition-delay: 0.3s;
-}
-
-.reveal-delay-4 {
-  transition-delay: 0.4s;
-}
-
-.reveal-delay-5 {
-  transition-delay: 0.5s;
-}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
 
 /* ─── Badge ─── */
 .badge {
@@ -253,15 +350,12 @@ ul {
   text-transform: uppercase;
 }
 
-.badge-gold {
-  background: var(--gold);
-  color: var(--sapphire);
-}
-
-.badge-amber {
-  background: var(--amber);
-  color: var(--white);
-}
+/* Orange badge (primary) */
+.badge-gold  { background: var(--gold); color: #FFFFFF; }
+/* Teal badge (location-style like the poster) */
+.badge-teal  { background: var(--teal); color: #FFFFFF; }
+/* Amber/gold accent */
+.badge-amber { background: var(--amber); color: #FFFFFF; }
 
 .badge-glass {
   background: var(--glass-light);
@@ -303,99 +397,52 @@ ul {
 }
 
 @keyframes pulse-ring {
-  0% {
-    transform: scale(0.9);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: scale(1.4);
-    opacity: 0;
-  }
+  0%   { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(1.4); opacity: 0; }
 }
 
 /* ─── Keyframes ─── */
 @keyframes kenBurns {
-  0% {
-    transform: scale(1) translate(0, 0);
-  }
-
-  100% {
-    transform: scale(1.08) translate(-1%, -1%);
-  }
+  0%   { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-1%, -1%); }
 }
 
 @keyframes float-up {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -200% center;
-  }
-
-  100% {
-    background-position: 200% center;
-  }
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 @keyframes marquee-ltr {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 @keyframes marquee-rtl {
-  from {
-    transform: translateX(-50%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
 
 @keyframes count-up {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.spin {
-  animation: spin 1s linear infinite;
-}
+.spin { animation: spin 1s linear infinite; }
 
 @keyframes spin {
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* ─── Scrollbar ─── */
-::-webkit-scrollbar {
-  width: 6px;
-}
+::-webkit-scrollbar { width: 6px; }
 
-::-webkit-scrollbar-track {
-  background: var(--linen-dark);
-}
+::-webkit-scrollbar-track { background: var(--linen-dark); }
 
 ::-webkit-scrollbar-thumb {
   background: var(--gold);

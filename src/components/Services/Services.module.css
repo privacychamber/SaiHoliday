@@ -1,6 +1,6 @@
 .section {
   padding-block: var(--section-py);
-  background: var(--sapphire);
+  background: var(--section-dark-bg);
   overflow-x: hidden;
 }
 .header { margin-bottom: 2.5rem; }
@@ -13,8 +13,9 @@
 }
 
 .card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  /* Visible white-tinted card on orange background */
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
   border-radius: 20px;
   padding: 2rem 1.5rem;
   display: flex;
@@ -25,10 +26,10 @@
   cursor: default;
 }
 .card:hover {
-  background: rgba(240,165,0,0.08);
-  border-color: rgba(240,165,0,0.35);
+  background: rgba(255,255,255,0.28);
+  border-color: rgba(255,255,255,0.5);
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
 .icon {
@@ -39,12 +40,14 @@
   font-family: var(--font-dm);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--white);
+  /* White on orange — high contrast */
+  color: #FFFFFF;
 }
 .desc {
   font-family: var(--font-inter);
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.6);
+  /* Boosted from 0.6 → 0.92 for readability on orange */
+  color: rgba(255,255,255,0.92);
   line-height: 1.7;
   flex: 1;
 }

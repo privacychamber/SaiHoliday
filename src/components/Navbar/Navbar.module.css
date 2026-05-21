@@ -1,13 +1,14 @@
 /* ── Navbar ── */
 .utilityBar {
-  background: var(--sapphire);
-  color: rgba(255, 255, 255, 0.7);
+  background: var(--nav-utility-bg);
+  color: var(--nav-utility-fg);
   font-family: var(--font-inter);
   font-size: 0.78rem;
   padding: 0.45rem 0;
   position: sticky;
   top: 0;
   z-index: 1001;
+  transition: background var(--t-med);
 }
 
 .utilityInner {
@@ -21,17 +22,18 @@
   position: sticky;
   top: 2.1rem;
   z-index: 1000;
-  padding: 1rem 0;
-  transition: background var(--t-med), box-shadow var(--t-med), padding var(--t-med);
-  background: rgba(10, 22, 40, 0.95);
+  padding: 0.9rem 0;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  transition: background var(--t-med), box-shadow var(--t-med), padding var(--t-med), border-color var(--t-med);
 }
 
 .scrolled {
-  background: rgba(10, 22, 40, 0.85);
+  background: var(--nav-bg-scrolled);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-  padding: 0.7rem 0;
+  box-shadow: var(--nav-shadow);
+  padding: 0.65rem 0;
 }
 
 .inner {
@@ -41,7 +43,7 @@
   gap: 1rem;
 }
 
-/* Logo */
+/* ── Logo ── */
 .logo {
   display: flex;
   align-items: center;
@@ -60,8 +62,9 @@
   font-family: var(--font-playfair);
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--white);
+  color: var(--nav-logo-main);
   line-height: 1;
+  transition: color var(--t-med);
 }
 
 .logoSub {
@@ -73,7 +76,7 @@
   text-transform: uppercase;
 }
 
-/* Nav Links */
+/* ── Nav Links ── */
 .links {
   display: flex;
   align-items: center;
@@ -92,31 +95,45 @@
   font-family: var(--font-dm);
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--nav-link-color);
   border-radius: 8px;
   transition: color var(--t-fast), background var(--t-fast);
 }
 
 .navLink:hover {
-  color: var(--gold);
+  color: var(--nav-link-hover);
   background: rgba(0, 167, 157, 0.08);
 }
 
-.chevron {
-  font-size: 0.65rem;
+/* Pay Now special highlight */
+.navLinkPay {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: #ffffff !important;
+  border-radius: 50px;
+  padding: 0.45rem 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 3px 14px rgba(240, 90, 26, 0.38);
+  transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast) !important;
 }
 
-/* Dropdown */
+.navLinkPay:hover {
+  background: linear-gradient(135deg, var(--gold-mid), var(--gold)) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(240, 90, 26, 0.52) !important;
+}
+
+/* ── Dropdown ── */
 .dropdown {
   position: absolute;
   top: calc(100% + 0.5rem);
   left: 0;
   min-width: 200px;
-  background: var(--sapphire-mid);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 12px;
   padding: 0.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-hover);
 }
 
 .dropdownItem {
@@ -124,21 +141,21 @@
   padding: 0.6rem 1rem;
   font-family: var(--font-dm);
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   border-radius: 8px;
   transition: background var(--t-fast), color var(--t-fast);
 }
 
 .dropdownItem:hover {
-  background: rgba(0, 167, 157, 0.12);
+  background: rgba(0, 167, 157, 0.08);
   color: var(--gold);
 }
 
-/* CTA */
+/* ── CTA Group ── */
 .ctaGroup {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .ctaBtn {
@@ -146,7 +163,74 @@
   padding: 0.65rem 1.4rem;
 }
 
-/* Hamburger */
+/* ── Theme Toggle ── */
+.themeToggle {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.themeToggleTrack {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 54px;
+  height: 28px;
+  border-radius: 50px;
+  background: var(--bg-card-alt);
+  border: 1.5px solid var(--border-subtle);
+  transition: background var(--t-med), border-color var(--t-med);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .themeToggleTrack {
+  background: #1a3555;
+  border-color: rgba(0, 167, 157, 0.35);
+}
+
+.themeToggleThumb {
+  position: absolute;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  box-shadow: 0 2px 8px rgba(240, 90, 26, 0.45);
+  transition: left var(--t-med), background var(--t-med);
+  z-index: 1;
+}
+
+[data-theme="dark"] .themeToggleThumb {
+  left: calc(54px - 25px);
+  background: linear-gradient(135deg, #f9d061, #f7931e);
+  box-shadow: 0 2px 8px rgba(247, 147, 30, 0.5);
+}
+
+.themeIcon {
+  position: absolute;
+  right: 5px;
+  font-size: 0.75rem;
+  line-height: 1;
+  transition: opacity var(--t-med);
+  z-index: 0;
+}
+
+[data-theme="dark"] .themeIcon {
+  left: 5px;
+  right: auto;
+}
+
+.themeToggle:hover .themeToggleTrack {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(240, 90, 26, 0.15), inset 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Hamburger ── */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -158,7 +242,7 @@
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--white);
+  background: var(--hamburger-color);
   border-radius: 2px;
   transition: var(--t-med);
 }
@@ -175,24 +259,25 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Mobile Menu */
+/* ── Mobile Menu ── */
 .mobileMenu {
   position: fixed;
   inset: 0;
   z-index: 999;
-  background: var(--sapphire);
+  background: var(--mobile-menu-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   padding: 2rem;
+  transition: background var(--t-med);
 }
 
 .mobileLink {
   font-family: var(--font-playfair);
   font-size: 1.8rem;
-  color: var(--white);
+  color: var(--sapphire);
   transition: color var(--t-fast);
 }
 
@@ -208,7 +293,26 @@
   justify-content: center;
 }
 
-/* Responsive */
+.mobileThemeToggle {
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-family: var(--font-dm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+
+.mobileThemeToggle:hover {
+  background: var(--gold);
+  color: #ffffff;
+}
+
+/* ── Responsive ── */
 @media (max-width: 900px) {
   .links {
     display: none;
