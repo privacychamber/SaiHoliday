@@ -102,7 +102,7 @@
 }
 
 .bookCard {
-  background: var(--section-dark-bg);
+  background: #0D2A4A;
   color: var(--white);
   padding: 2.5rem;
   border-radius: 24px;

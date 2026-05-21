@@ -90,7 +90,7 @@
 
 /* Locations */
 .locations {
-  background: var(--section-dark-bg);
+  background: var(--linen);
   padding-block: var(--section-py);
 }
 

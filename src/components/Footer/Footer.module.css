@@ -1,5 +1,6 @@
 .footer {
-  background: var(--section-dark-bg);
+  /* Deep navy footer — professional, not orange */
+  background: #0D2A4A;
   color: rgba(255,255,255,0.92);
 }
 
