@@ -110,7 +110,7 @@
 .field textarea:focus {
   border-color: var(--gold);
   background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(240, 90, 26, 0.15);
+  box-shadow: 0 0 0 3px rgba(201, 134, 10, 0.2);
 }
 .field select option { background: #FFFFFF; color: #0B1D30; }
 

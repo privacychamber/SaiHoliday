@@ -1,6 +1,6 @@
 /* ============================================================
    SAI HOLIDAY — GLOBAL DESIGN SYSTEM
-   Palette: Poster Edition — Navy, Sunset Orange & Ocean Teal
+   Palette: White & Gold Edition — Premium Luxury
    Default: Premium White (Light) Theme
    ============================================================ */
 
@@ -10,68 +10,68 @@
 :root {
   color-scheme: light;
 
-  /* ── Poster Brand Palette ── */
-  /* Deep Navy — used ONLY for dark readable text, never backgrounds */
-  --sapphire:         #0D2A4A;
-  --sapphire-mid:     #1A3E60;
+  /* ── White & Gold Brand Palette ── */
+  /* Deep Ink — used ONLY for dark readable text, never backgrounds */
+  --sapphire:         #1A1200;
+  --sapphire-mid:     #3A2E00;
 
-  /* Sunset Orange (primary accent — CTAs, icons, highlights) */
-  --gold:             #F05A1A;
-  --gold-mid:         #D84E0F;
-  --gold-light:       #F47A48;
+  /* Rich Gold (primary accent — CTAs, icons, highlights, sections) */
+  --gold:             #C9860A;
+  --gold-mid:         #A86D06;
+  --gold-light:       #E0A020;
 
-  /* Ocean Teal (secondary accent — location badges, links) */
-  --teal:             #0E7B8C;
-  --teal-light:       #1A9BAD;
+  /* Warm Champagne (secondary accent) */
+  --teal:             #B8860B;
+  --teal-light:       #D4A017;
 
-  /* Warm Gold (decorative / stat numbers) */
-  --amber:            #D4960A;
-  --amber-light:      #F0B429;
+  /* Bright Gold (decorative / stat numbers) */
+  --amber:            #E8B030;
+  --amber-light:      #F5C842;
 
   /* Neutrals */
-  --ink:              #0B1D30;
-  --muted:            #5A6B7A;
+  --ink:              #1A1200;
+  --muted:            #6B5E3A;
   --white:            #FFFFFF;
 
-  /* ── Section accent bg — ORANGE (no dark navy) ── */
-  --section-dark-bg:   #F05A1A;
-  --section-dark-mid:  #D84E0F;
+  /* ── Section accent bg — GOLD (premium, no dark navy, no orange) ── */
+  --section-dark-bg:   #C9860A;
+  --section-dark-mid:  #A86D06;
 
   /* ── Light-theme surface tokens ── */
-  --bg-page:         #F7F8FA;
+  --bg-page:         #FFFDF7;
   --bg-card:         #FFFFFF;
-  --bg-card-alt:     #FEF4EF;
-  --bg-section-alt:  #FFF8F5;
-  --border-subtle:   rgba(240, 90, 26, 0.14);
-  --border-card:     rgba(13, 42, 74, 0.08);
+  --bg-card-alt:     #FFFBEF;
+  --bg-section-alt:  #FFF8E1;
+  --border-subtle:   rgba(201, 134, 10, 0.18);
+  --border-card:     rgba(201, 134, 10, 0.12);
 
   /* ── Text tokens ── */
-  --text-primary:    #0B1D30;
-  --text-secondary:  #1A3E60;
-  --text-muted:      #5A6B7A;
+  --text-primary:    #1A1200;
+  --text-secondary:  #3A2E00;
+  --text-muted:      #6B5E3A;
   --text-on-dark:    #FFFFFF;
 
   /* ── Navbar tokens ── */
   --nav-bg:          rgba(255, 255, 255, 0.97);
   --nav-bg-scrolled: rgba(255, 255, 255, 0.93);
-  --nav-border:      rgba(240, 90, 26, 0.15);
-  --nav-shadow:      0 2px 24px rgba(13, 42, 74, 0.1);
-  --nav-link-color:  #1A3E60;
-  --nav-link-hover:  #F05A1A;
-  --nav-logo-main:   #0D2A4A;
-  --nav-utility-bg:  #F05A1A;
+  --nav-border:      rgba(201, 134, 10, 0.15);
+  --nav-shadow:      0 2px 24px rgba(201, 134, 10, 0.1);
+  --nav-link-color:  #3A2E00;
+  --nav-link-hover:  #C9860A;
+  --nav-logo-main:   #1A1200;
+  --nav-utility-bg:  #C9860A;
   --nav-utility-fg:  #FFFFFF;
-  --hamburger-color: #0D2A4A;
-  --mobile-menu-bg:  #FFF8F5;
+  --hamburger-color: #1A1200;
+  --mobile-menu-bg:  #FFFDF7;
 
   /* ── Glass Surface ── */
-  --glass-light:   rgba(255, 255, 255, 0.75);
-  --glass-dark:    rgba(13, 42, 74, 0.65);
-  --glass-border:  rgba(240, 90, 26, 0.2);
+  --glass-light:   rgba(255, 255, 255, 0.80);
+  --glass-dark:    rgba(26, 18, 0, 0.65);
+  --glass-border:  rgba(201, 134, 10, 0.25);
 
   /* ── Linen (legacy compat) ── */
-  --linen:         #F7F8FA;
-  --linen-dark:    #EDE8E2;
+  --linen:         #FFFDF7;
+  --linen-dark:    #F5EDCE;
 
   /* ── Fonts ── */
   --font-playfair: 'Playfair Display', Georgia, serif;
@@ -88,9 +88,9 @@
   --t-slow:  0.55s var(--ease-smooth);
 
   /* ── Shadows ── */
-  --shadow-card:  0 4px 24px rgba(13, 42, 74, 0.09);
-  --shadow-hover: 0 14px 44px rgba(13, 42, 74, 0.18);
-  --shadow-gold:  0 0 0 3px rgba(240, 90, 26, 0.4);
+  --shadow-card:  0 4px 24px rgba(201, 134, 10, 0.10);
+  --shadow-hover: 0 14px 44px rgba(201, 134, 10, 0.22);
+  --shadow-gold:  0 0 0 3px rgba(201, 134, 10, 0.35);
 }
 
 /* ─── Dark Theme ─── */
@@ -102,7 +102,7 @@
   --bg-card:         #0D1B2E;
   --bg-card-alt:     #121F33;
   --bg-section-alt:  #0A1525;
-  --border-subtle:   rgba(240, 90, 26, 0.2);
+  --border-subtle:   rgba(201, 134, 10, 0.2);
   --border-card:     rgba(255, 255, 255, 0.07);
 
   /* Text tokens */
@@ -114,10 +114,10 @@
   /* Navbar tokens */
   --nav-bg:          rgba(7, 15, 26, 0.97);
   --nav-bg-scrolled: rgba(7, 15, 26, 0.9);
-  --nav-border:      rgba(240, 90, 26, 0.18);
+  --nav-border:      rgba(201, 134, 10, 0.18);
   --nav-shadow:      0 2px 20px rgba(0, 0, 0, 0.5);
   --nav-link-color:  rgba(255, 255, 255, 0.88);
-  --nav-link-hover:  #F47A48;
+  --nav-link-hover:  #E0A020;
   --nav-logo-main:   #FFFFFF;
   --nav-utility-bg:  #040C16;
   --nav-utility-fg:  rgba(255, 255, 255, 0.72);
@@ -229,12 +229,12 @@ ul {
 .btn-primary {
   background: linear-gradient(135deg, var(--gold), var(--gold-light));
   color: #FFFFFF;
-  box-shadow: 0 4px 18px rgba(240, 90, 26, 0.38);
+  box-shadow: 0 4px 18px rgba(201, 134, 10, 0.38);
 }
 
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--gold-mid), var(--gold));
-  box-shadow: 0 8px 30px rgba(240, 90, 26, 0.52);
+  box-shadow: 0 8px 30px rgba(201, 134, 10, 0.52);
 }
 
 .btn-outline {
