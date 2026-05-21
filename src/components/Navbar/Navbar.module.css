@@ -47,21 +47,33 @@
 .logo {
   display: flex;
   align-items: center;
+  gap: 0.6rem;
   text-decoration: none;
-  flex-shrink: 0;
 }
 
-.logoImg {
-  height: 56px;
-  width: auto;
-  object-fit: contain;
-  transition: transform var(--t-fast), opacity var(--t-fast);
-  /* No filter — keep original logo colors */
+.logoIcon {
+  font-size: 1.5rem;
+  color: var(--gold);
+  animation: float-up 3s ease-in-out infinite;
 }
 
-.logo:hover .logoImg {
-  transform: scale(1.04);
-  opacity: 0.92;
+.logoMain {
+  display: block;
+  font-family: var(--font-playfair);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--nav-logo-main);
+  line-height: 1;
+  transition: color var(--t-med);
+}
+
+.logoSub {
+  display: block;
+  font-family: var(--font-inter);
+  font-size: 0.65rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 /* ── Nav Links ── */
