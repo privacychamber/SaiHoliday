@@ -1,6 +1,6 @@
 .section {
   padding-block: var(--section-py);
-  /* White background — orange only on cards/buttons */
+  /* White background — brand blue only on cards/buttons */
   background: var(--bg-page);
   overflow-x: hidden;
 }

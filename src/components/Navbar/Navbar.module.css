@@ -112,7 +112,7 @@
   border-radius: 50px;
   padding: 0.45rem 1.1rem;
   font-weight: 700;
-  box-shadow: 0 3px 14px rgba(201, 134, 10, 0.38);
+  box-shadow: 0 3px 14px rgba(0, 59, 149, 0.38);
   transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast) !important;
 }
 
@@ -120,7 +120,7 @@
   background: linear-gradient(135deg, var(--gold-mid), var(--gold)) !important;
   color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(201, 134, 10, 0.52) !important;
+  box-shadow: 0 6px 22px rgba(0, 59, 149, 0.52) !important;
 }
 
 /* ── Dropdown ── */
@@ -200,7 +200,7 @@
   height: 22px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--gold), var(--gold-light));
-  box-shadow: 0 2px 8px rgba(201, 134, 10, 0.45);
+  box-shadow: 0 2px 8px rgba(0, 59, 149, 0.45);
   transition: left var(--t-med), background var(--t-med);
   z-index: 1;
 }
@@ -227,7 +227,7 @@
 
 .themeToggle:hover .themeToggleTrack {
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201, 134, 10, 0.2), inset 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 59, 149, 0.2), inset 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Hamburger ── */

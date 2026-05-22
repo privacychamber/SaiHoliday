@@ -1,5 +1,5 @@
 .section {
-  /* White background — orange only on buttons/accents */
+  /* White background — brand blue only on buttons/accents */
   background: var(--linen);
   padding-block: 3.5rem;
 }
@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 .card {
-  /* White card with orange accent on top */
+  /* White card with brand blue accent on top */
   background: var(--white);
   display: flex;
   flex-direction: column;
@@ -45,7 +45,7 @@
   font-family: var(--font-playfair);
   font-size: clamp(2.2rem, 4vw, 2.8rem);
   font-weight: 700;
-  /* Orange number on white card — high contrast */
+  /* Brand blue number on white card — high contrast */
   color: var(--gold);
   display: flex;
   align-items: baseline;
