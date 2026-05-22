@@ -73,7 +73,7 @@
 }
 
 /* Text Block */
-.textBlock { color: var(--white); }
+.textBlock { color: #ffffff; }
 
 .slideLabel {
   display: inline-flex;
@@ -99,7 +99,7 @@
   font-size: clamp(2.6rem, 5.5vw, 4.2rem);
   font-weight: 700;
   line-height: 1.12;
-  color: var(--white);
+  color: #ffffff;
   margin-bottom: 1.4rem;
 }
 .headline em {

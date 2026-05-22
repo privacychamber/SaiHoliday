@@ -141,8 +141,8 @@ export default function ConsultancyPage() {
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <span className="section-label" style={{ color: 'var(--gold)' }}>✦ Our Expertise</span>
-              <h2 className="section-title section-title-light">Locations We Specialize In</h2>
-              <p className="section-sub section-sub-light" style={{ marginInline: 'auto' }}>
+              <h2 className="section-title">Locations We Specialize In</h2>
+              <p className="section-sub" style={{ marginInline: 'auto' }}>
                 We have deep partnerships and verified properties across these popular destinations.
               </p>
             </div>
@@ -243,7 +243,7 @@ export default function ConsultancyPage() {
                 <a href="https://wa.me/919594541724?text=Hi, I need villa consultancy." className="btn btn-primary" style={{ background: '#25D366', color: 'white', border: 'none' }}>
                   <MessageSquare size={20} /> Chat on WhatsApp
                 </a>
-                <a href="tel:+919594541724" className="btn btn-outline" style={{ color: 'var(--sapphire)', borderColor: 'var(--sapphire)' }}>
+                <a href="tel:+919594541724" className="btn btn-outline" style={{ color: '#0D2A4A', borderColor: '#0D2A4A' }}>
                   <Phone size={20} /> Call a Consultant
                 </a>
               </div>

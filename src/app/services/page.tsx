@@ -167,7 +167,7 @@ export default function ServicesPage() {
                 >
                   💬 WhatsApp Us
                 </a>
-                <a href="tel:+919594541724" className="btn btn-outline" style={{ color: 'var(--white)', borderColor: 'rgba(255,255,255,0.4)' }}>
+                <a href="tel:+919594541724" className="btn btn-outline" style={{ borderColor: 'rgba(255,255,255,0.4)' }}>
                   📞 Call Now
                 </a>
               </div>

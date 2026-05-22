@@ -17,13 +17,13 @@
   position: relative;
   z-index: 2;
   padding-block: 5rem 3rem;
-  color: var(--white);
+  color: #ffffff;
 }
 .heroTitle {
   font-family: var(--font-playfair);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
-  color: var(--white);
+  color: #ffffff;
   line-height: 1.2;
   margin-block: 0.75rem;
 }

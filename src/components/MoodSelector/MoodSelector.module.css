@@ -1,6 +1,6 @@
 .section {
   padding-block: var(--section-py);
-  background: var(--white);
+  background: var(--bg-page);
 }
 .header { margin-bottom: 2.5rem; }
 
@@ -50,6 +50,7 @@
   border-radius: 18px;
   overflow: hidden;
   background: var(--white);
+  border: 1px solid var(--border-card);
   box-shadow: var(--shadow-card);
   transition: transform var(--t-med), box-shadow var(--t-med);
 }

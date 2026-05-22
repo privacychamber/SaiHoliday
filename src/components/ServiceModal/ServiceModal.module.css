@@ -39,7 +39,7 @@
 
 .closeBtn:hover {
   background: var(--gold);
-  color: var(--sapphire);
+  color: #ffffff;
 }
 
 .header {
@@ -117,4 +117,42 @@
 
 .success p {
   color: var(--muted);
+}
+
+/* ── Dark Theme Overrides ── */
+:global([data-theme="dark"]) .content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+}
+
+:global([data-theme="dark"]) .field label {
+  color: var(--text-muted);
+}
+
+:global([data-theme="dark"]) .field input,
+:global([data-theme="dark"]) .field select,
+:global([data-theme="dark"]) .field textarea {
+  background: var(--bg-card-alt);
+  color: var(--text-primary);
+  border-color: var(--border-card);
+}
+
+:global([data-theme="dark"]) .field input::placeholder,
+:global([data-theme="dark"]) .field textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+:global([data-theme="dark"]) .closeBtn {
+  background: var(--bg-card-alt);
+  color: var(--text-primary);
+}
+
+:global([data-theme="dark"]) .closeBtn:hover {
+  background: var(--gold);
+  color: #ffffff;
+}
+
+:global([data-theme="dark"]) .success h3 {
+  color: var(--text-primary);
 }

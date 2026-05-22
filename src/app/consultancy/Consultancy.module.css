@@ -17,13 +17,13 @@
   position: relative;
   z-index: 2;
   padding-block: 5rem 3.5rem;
-  color: var(--white);
+  color: #ffffff;
 }
 .heroTitle {
   font-family: var(--font-playfair);
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 700;
-  color: var(--white);
+  color: #ffffff;
   line-height: 1.15;
   margin-block: 0.75rem;
 }
@@ -128,7 +128,7 @@
   font-family: var(--font-dm);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--white);
+  color: #ffffff;
 }
 
 /* Values / Why Choose Us */
@@ -172,7 +172,7 @@
   padding: 3rem;
   border-radius: 24px;
   text-align: center;
-  color: var(--sapphire);
+  color: #0D2A4A;
 }
 .ctaBox h2 {
   font-family: var(--font-playfair);
@@ -252,7 +252,7 @@
 }
 .modalClose:hover {
   background: var(--gold);
-  color: var(--white);
+  color: #ffffff;
 }
 
 .modalImageArea {

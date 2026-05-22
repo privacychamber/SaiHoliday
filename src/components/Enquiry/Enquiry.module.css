@@ -21,7 +21,7 @@
 }
 
 /* Text Side */
-.textSide { color: var(--white); }
+.textSide { color: #ffffff; }
 
 .contactInfo {
   display: flex;
@@ -33,7 +33,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--white);
+  color: #ffffff;
   text-decoration: none;
   transition: color var(--t-fast);
 }

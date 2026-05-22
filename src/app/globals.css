@@ -239,13 +239,13 @@ ul {
 
 .btn-outline {
   background: transparent;
-  color: var(--white);
+  color: #FFFFFF;
   border: 2px solid rgba(255, 255, 255, 0.65);
 }
 
 .btn-outline:hover {
   background: rgba(255, 255, 255, 0.12);
-  border-color: var(--white);
+  border-color: #FFFFFF;
 }
 
 /* Ghost — orange border */
@@ -293,7 +293,7 @@ ul {
 }
 
 .section-title-light {
-  color: var(--white);
+  color: #FFFFFF;
 }
 
 .section-sub {
@@ -360,7 +360,7 @@ ul {
 .badge-glass {
   background: var(--glass-light);
   backdrop-filter: blur(8px);
-  color: var(--white);
+  color: #FFFFFF;
   border: 1px solid var(--glass-border);
 }
 

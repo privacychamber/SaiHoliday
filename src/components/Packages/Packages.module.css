@@ -1,6 +1,6 @@
 .section {
   padding-block: var(--section-py);
-  background: var(--white);
+  background: var(--bg-page);
   overflow-x: hidden;
 }
 

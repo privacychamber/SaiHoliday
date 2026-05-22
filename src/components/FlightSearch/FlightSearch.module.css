@@ -114,7 +114,7 @@
 .swapBtn:hover {
   background: var(--section-dark-bg);
   border-color: var(--section-dark-bg);
-  color: var(--white);
+  color: #ffffff;
   transform: rotate(180deg);
 }
 
