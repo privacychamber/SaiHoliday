@@ -440,11 +440,21 @@ ul {
 }
 
 /* ─── Scrollbar ─── */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
 
-::-webkit-scrollbar-track { background: var(--linen-dark); }
+::-webkit-scrollbar-track {
+  background: var(--linen-dark);
+}
 
 ::-webkit-scrollbar-thumb {
   background: var(--gold);
-  border-radius: 3px;
+  border-radius: 5px;
+  border: 2px solid var(--linen-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-mid);
 }
