@@ -92,38 +92,39 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className={styles.mobileMenu}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={styles.mobileLink}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className={styles.mobileCtas}>
-              <a href="tel:+919594541724" className="btn btn-primary">📞 Call Now</a>
-              <a
-                href="https://wa.me/919594541724?text=Hi Sai Holiday, I want to enquire about a travel package."
-                target="_blank" rel="noreferrer"
-                className="btn btn-ghost-gold"
-              >💬 WhatsApp</a>
-            </div>
-            {/* Theme toggle inside mobile menu */}
-            <button
-              className={styles.mobileThemeToggle}
-              onClick={toggleTheme}
-              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            >
-              {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
-            </button>
-          </div>
-        )}
       </nav>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className={styles.mobileMenu}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={styles.mobileLink}
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <div className={styles.mobileCtas}>
+            <a href="tel:+919594541724" className="btn btn-primary">📞 Call Now</a>
+            <a
+              href="https://wa.me/919594541724?text=Hi Sai Holiday, I want to enquire about a travel package."
+              target="_blank" rel="noreferrer"
+              className="btn btn-ghost-gold"
+            >💬 WhatsApp</a>
+          </div>
+          {/* Theme toggle inside mobile menu */}
+          <button
+            className={styles.mobileThemeToggle}
+            onClick={toggleTheme}
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          >
+            {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+          </button>
+        </div>
+      )}
     </>
   );
 }

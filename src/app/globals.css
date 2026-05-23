@@ -97,6 +97,11 @@
 [data-theme="dark"] {
   color-scheme: dark;
 
+  /* Brand Primary Blue in Dark Mode — glowing premium blue for readability */
+  --gold:             #3A86FF;
+  --gold-mid:         #0056b3;
+  --gold-light:       #80B3FF;
+
   /* Surface tokens */
   --bg-page:         #070F1A;
   --bg-card:         #0D1B2E;
