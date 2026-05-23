@@ -7,7 +7,7 @@ import { useTheme } from '@/components/ThemeProvider/ThemeProvider';
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Flights', href: '/flight' },
-  { label: 'Consultancy', href: '/consultancy' },
+  { label: 'Villa & Staycation', href: '/villa-staycation' },
   { label: 'Services', href: '/services' },
   { label: 'Contact', href: '/#contact' },
   { label: '💳 Pay Now', href: '/payment' },

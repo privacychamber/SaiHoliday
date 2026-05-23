@@ -7,7 +7,7 @@ const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'Packages', href: '/#packages' },
   { label: 'Flights', href: '/flight' },
-  { label: 'Consultancy', href: '/consultancy' },
+  { label: 'Villa & Staycation', href: '/villa-staycation' },
   { label: 'Contact', href: '/#contact' },
 ];
 

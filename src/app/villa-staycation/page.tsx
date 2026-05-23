@@ -5,9 +5,9 @@ import { Home, Waves, Trees, MapPin, Phone, MessageSquare, ShieldCheck, Sparkles
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import Enquiry from '@/components/Enquiry/Enquiry';
-import styles from './Consultancy.module.css';
+import styles from './VillaStaycation.module.css';
 
-const consultancyServices = [
+const villaStaycationServices = [
   {
     icon: <Waves size={32} />,
     title: 'Luxury & Private Pools',
@@ -64,8 +64,8 @@ const values = [
   { icon: <Phone size={36} color="var(--gold)" />, title: 'Dedicated Consultant', text: 'A single point of contact for your entire stay — from booking to checkout.' },
 ];
 
-export default function ConsultancyPage() {
-  const [activeService, setActiveService] = useState<typeof consultancyServices[number] | null>(null);
+export default function VillaStaycationPage() {
+  const [activeService, setActiveService] = useState<typeof villaStaycationServices[number] | null>(null);
 
   const sendLocationEnquiry = (locationName: string) => {
     const WA = '919594541724';
@@ -78,7 +78,7 @@ export default function ConsultancyPage() {
   const sendServiceEnquiry = (serviceTitle: string) => {
     const WA = '919594541724';
     const msg = encodeURIComponent(
-      `Hi Sai Holiday! 🙏\n\nI'm interested in your *${serviceTitle}* staycation consultancy service.\n\nPlease share more details and recommend some options.`
+      `Hi Sai Holiday! 🙏\n\nI'm interested in your *${serviceTitle}* staycation service.`
     );
     window.open(`https://wa.me/${WA}?text=${msg}`, '_blank');
   };
@@ -97,7 +97,7 @@ export default function ConsultancyPage() {
               className="section-label"
               style={{ color: 'var(--gold)' }}
             >
-              ✦ Expert Travel Consultancy
+              ✦ Premium Villa & Staycation
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -105,7 +105,7 @@ export default function ConsultancyPage() {
               transition={{ delay: 0.1 }}
               className={styles.heroTitle}
             >
-              Villa & Staycation<br />Consultancy
+              Villa & Staycation
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -113,7 +113,7 @@ export default function ConsultancyPage() {
               transition={{ delay: 0.2 }}
               className={styles.heroSub}
             >
-              We don&apos;t just book; we curate. Tell us your vibe, and our senior consultants
+              We don&apos;t just book; we curate. Tell us your vibe, and we
               will find the perfect villa from the best booking sources for you.
             </motion.p>
             <motion.div
@@ -123,14 +123,14 @@ export default function ConsultancyPage() {
               style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}
             >
               <a
-                href="https://wa.me/919594541724?text=Hi, I need villa consultancy for a staycation."
+                href="https://wa.me/919594541724?text=Hi, I want to book a villa staycation."
                 target="_blank" rel="noreferrer"
                 className="btn btn-primary"
               >
                 💬 Get Free Consultation
               </a>
               <a href="tel:+919594541724" className="btn btn-outline">
-                📞 Call a Consultant
+                📞 Call Us
               </a>
             </motion.div>
           </div>
@@ -173,13 +173,13 @@ export default function ConsultancyPage() {
           <div className="container">
             <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <span className="section-label">✦ What We Offer</span>
-              <h2 className="section-title">Our Consultancy Services</h2>
+              <h2 className="section-title">Our Villa & Staycation Services</h2>
               <p className="section-sub" style={{ marginInline: 'auto' }}>
                 From luxury pool villas to peaceful nature retreats — we curate the perfect stay for every occasion.
               </p>
             </div>
             <div className={styles.grid}>
-              {consultancyServices.map((service, i) => (
+              {villaStaycationServices.map((service, i) => (
                 <motion.div
                   key={service.title}
                   initial={{ opacity: 0, y: 20 }}
@@ -240,11 +240,11 @@ export default function ConsultancyPage() {
               <h2>Need Free Advice?</h2>
               <p style={{ marginBottom: '2rem', fontSize: '1.15rem' }}>Our senior travel consultants are ready to help you plan your perfect weekend getaway.</p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="https://wa.me/919594541724?text=Hi, I need villa consultancy." className="btn btn-primary" style={{ background: '#25D366', color: 'white', border: 'none' }}>
+                <a href="https://wa.me/919594541724?text=Hi, I want to book a villa staycation." className="btn btn-primary" style={{ background: '#25D366', color: 'white', border: 'none' }}>
                   <MessageSquare size={20} /> Chat on WhatsApp
                 </a>
                 <a href="tel:+919594541724" className="btn btn-outline" style={{ color: '#0D2A4A', borderColor: '#0D2A4A' }}>
-                  <Phone size={20} /> Call a Consultant
+                  <Phone size={20} /> Call Us
                 </a>
               </div>
             </motion.div>
@@ -274,7 +274,7 @@ export default function ConsultancyPage() {
               </div>
               
               <div className={styles.modalBody}>
-                <span className={styles.modalLabel}>✦ Consultancy Detail</span>
+                <span className={styles.modalLabel}>✦ Service Detail</span>
                 <h3 className={styles.modalTitle}>{activeService.title}</h3>
                 <p className={styles.modalText}>{activeService.text}</p>
                 

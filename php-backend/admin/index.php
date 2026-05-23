@@ -324,7 +324,7 @@ if ($logged_in) {
       <span class="icon">⚙️</span> Manage Packages
     </a>
     <a href="?tab=consultancy" class="nav-link <?= $tab==='consultancy'?'active':'' ?>">
-      <span class="icon">✦</span> Consultancy
+      <span class="icon">✦</span> Villa & Staycation
     </a>
     <a href="?tab=export" class="nav-link <?= $tab==='export'?'active':'' ?>">
       <span class="icon">⬇️</span> Export Data
@@ -435,7 +435,7 @@ if ($logged_in) {
           'hotel'=>'Hotel Reservations',
           'visa'=>'Visa Assistance',
           'package'=>'Package Enquiries',
-          'consultancy'=>'Consultancy Leads'
+          'consultancy'=>'Villa & Staycation Leads'
       ];
       $icons = ['leads'=>'📋','flight'=>'✈️','railway'=>'🚂','hotel'=>'🏨','visa'=>'🛂','package'=>'🗺️','consultancy'=>'✦'];
     ?>

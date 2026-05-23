@@ -70,8 +70,8 @@ export default function Hero() {
             <a href="#packages" className="btn btn-primary">
               <Star size={18} fill="currentColor" /> Start Exploring
             </a>
-            <Link href="/consultancy/" className="btn btn-outline">
-              <Home size={18} /> Villa Consultancy
+            <Link href="/villa-staycation" className="btn btn-outline">
+              <Home size={18} /> Villa & Staycation
             </Link>
             <a href={`https://wa.me/${WA_NUMBER}?text=Hi Sai Holiday, I want to book a trip!`}
               target="_blank" rel="noreferrer" className="btn btn-outline">
