@@ -243,7 +243,7 @@ export default function VillaStaycationPage() {
                 <a href="https://wa.me/919594541724?text=Hi, I want to book a villa staycation." className="btn btn-primary" style={{ background: '#25D366', color: 'white', border: 'none' }}>
                   <MessageSquare size={20} /> Chat on WhatsApp
                 </a>
-                <a href="tel:+919594541724" className="btn btn-outline" style={{ color: '#0D2A4A', borderColor: '#0D2A4A' }}>
+                <a href="tel:+919594541724" className="btn btn-outline">
                   <Phone size={20} /> Call Us
                 </a>
               </div>
