@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, MessageSquare, ChevronDown, Star, Users, MapPin, Calendar, Home } from 'lucide-react';
+import { MessageSquare, Star, Home } from 'lucide-react';
 import styles from './Hero.module.css';
 
 const WA_NUMBER = '919594541724';
@@ -16,105 +16,7 @@ const slides = [
   { image: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1920&q=85', label: 'Paris', tagline: 'The City of Lights' },
 ];
 
-function HeroForm() {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [dest, setDest] = useState('');
-  const [date, setDate] = useState('');
-  const [dateType, setDateType] = useState('text');
-  const [sent, setSent] = useState(false);
 
-  const formatDateForDisplay = (dateStr: string) => {
-    if (!dateStr) return '';
-    const parts = dateStr.split('-');
-    if (parts.length === 3 && parts[0].length === 4) {
-      return `${parts[2]}-${parts[1]}-${parts[0]}`;
-    }
-    return dateStr;
-  };
-
-  const parseDateFromDisplay = (displayStr: string) => {
-    const parts = displayStr.split('-');
-    if (parts.length === 3 && parts[2].length === 4) {
-      return `${parts[2]}-${parts[1]}-${parts[0]}`;
-    }
-    return displayStr;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !phone.trim()) return;
-    
-    setSent(true);
-    
-    // Save to DB
-    try {
-      await fetch('/php-backend/api/enquiry.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name, phone, destination: dest, travel_date: date,
-          type: 'consultancy',
-          message: 'Villa Consultancy Request from Hero Banner'
-        })
-      });
-    } catch (err) {
-      console.error('Failed to save lead', err);
-    }
-
-    const msg = encodeURIComponent(
-      `Hi Sai Holiday! 🙏\n\nI'm interested in Villa Consultancy/Staycations.\nName: ${name}\nPhone: ${phone}\nDestination: ${dest || 'Not specified'}\nTravel Date: ${date || 'Flexible'}`
-    );
-    window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
-    
-    setTimeout(() => {
-      setSent(false);
-      setDate('');
-    }, 4000);
-  };
-
-  return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.field}>
-        <label htmlFor="hero-name">Full Name</label>
-        <input id="hero-name" type="text" placeholder="Your name" value={name}
-          onChange={e => setName(e.target.value)} required />
-      </div>
-      <div className={styles.field}>
-        <label htmlFor="hero-phone">WhatsApp Number</label>
-        <input id="hero-phone" type="tel" placeholder="+91 95945 41724" value={phone}
-          onChange={e => setPhone(e.target.value)} required />
-      </div>
-      <div className={styles.field}>
-        <label htmlFor="hero-dest">Destination Interest</label>
-        <select id="hero-dest" value={dest} onChange={e => setDest(e.target.value)}>
-          <option value="">Select destination…</option>
-          {['Kashmir', 'Manali', 'Kedarnath', 'Kerala', 'Goa', 'Rajasthan', 'Bali', 'Dubai', 'Maldives', 'Switzerland', 'Paris', 'Singapore', 'Thailand'].map(d => (
-            <option key={d}>{d}</option>
-          ))}
-        </select>
-      </div>
-      <div className={styles.field}>
-        <label htmlFor="hero-date">Travel Date (approx)</label>
-        <input
-          id="hero-date"
-          type={dateType}
-          placeholder="dd-mm-yyyy"
-          onFocus={() => setDateType('date')}
-          onBlur={() => setDateType('text')}
-          value={dateType === 'date' ? date : formatDateForDisplay(date)}
-          onChange={e => {
-            const val = e.target.value;
-            setDate(dateType === 'date' ? val : parseDateFromDisplay(val));
-          }}
-        />
-      </div>
-      <button type="submit" className={`btn btn-primary ${styles.formBtn}`}>
-        {sent ? '✅ Opening WhatsApp…' : 'Get My Quote →'}
-      </button>
-    </form>
-  );
-}
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
@@ -168,7 +70,7 @@ export default function Hero() {
             <a href="#packages" className="btn btn-primary">
               <Star size={18} fill="currentColor" /> Start Exploring
             </a>
-            <Link href="/consultancy/" className="btn btn-outline" style={{ borderColor: 'var(--gold)', color: 'var(--gold)' }}>
+            <Link href="/consultancy/" className="btn btn-outline">
               <Home size={18} /> Villa Consultancy
             </Link>
             <a href={`https://wa.me/${WA_NUMBER}?text=Hi Sai Holiday, I want to book a trip!`}
@@ -182,12 +84,6 @@ export default function Hero() {
             <span>100+ Destinations</span><span>|</span>
             <span>24/7 Support</span>
           </div>
-        </div>
-
-        <div className={`glass ${styles.formCard}`}>
-          <h3 className={styles.formTitle}>Plan Your Trip</h3>
-          <p className={styles.formSub}>Get a free personalised quote</p>
-          <HeroForm />
         </div>
       </div>
 
