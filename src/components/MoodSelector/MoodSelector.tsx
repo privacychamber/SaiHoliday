@@ -38,7 +38,7 @@ const moodPackages: Record<string, { title: string; location: string; price: str
   ],
   'Adventure': [
     { title: 'Rishikesh Rafting & Camping', location: 'Uttarakhand', price: '₹12,999', image: 'https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=500&q=80' },
-    { title: 'Manali Trekking', location: 'Himachal Pradesh', price: '₹16,999', image: 'https://images.unsplash.com/photo-1585516482984-d1a32eb4a1c5?w=500&q=80' },
+    { title: 'Manali Trekking', location: 'Himachal Pradesh', price: '₹16,999', image: 'https://images.unsplash.com/photo-1597074866923-dc0589150358?w=500&q=80' },
     { title: 'Bali Adventure', location: 'Bali, Indonesia', price: '₹54,999', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80' },
   ],
   'Family': [
@@ -54,7 +54,7 @@ const moodPackages: Record<string, { title: string; location: string; price: str
   'Nature': [
     { title: 'Kerala Backwaters', location: 'Alleppey, Kerala', price: '₹22,999', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80' },
     { title: 'Bali Rice Terraces', location: 'Ubud, Bali', price: '₹54,999', image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80' },
-    { title: 'Manali Valley', location: 'Himachal Pradesh', price: '₹16,999', image: 'https://images.unsplash.com/photo-1585516482984-d1a32eb4a1c5?w=500&q=80' },
+    { title: 'Manali Valley', location: 'Himachal Pradesh', price: '₹16,999', image: 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=500&q=80' },
   ],
 };
 
