@@ -100,7 +100,19 @@ export default function Enquiry() {
                 body: JSON.stringify(formData)
               });
               if (res.ok) {
-                alert('✅ Enquiry sent successfully! Our experts will contact you soon.');
+                const msg = `Hi Sai Holiday! 🙏\n\nI want to enquire about a travel package:\n` +
+                  `• *Name*: ${formData.name}\n` +
+                  `• *WhatsApp Number*: ${formData.phone}\n` +
+                  `• *Email*: ${formData.email || 'N/A'}\n` +
+                  `• *Destination Interest*: ${formData.destination}\n` +
+                  `• *Travel Date (approx)*: ${formatDateForDisplay(formData.travel_date) || 'Flexible'}\n` +
+                  `• *Number of Travelers*: ${formData.pax}\n` +
+                  `• *Message / Special Requests*: ${formData.message || 'None'}`;
+                
+                const whatsappUrl = `https://wa.me/919594541724?text=${encodeURIComponent(msg)}`;
+                window.open(whatsappUrl, '_blank');
+
+                alert('✅ Enquiry sent successfully! Opening WhatsApp to send details...');
                 setTravelDate('');
                 (e.target as HTMLFormElement).reset();
               }
