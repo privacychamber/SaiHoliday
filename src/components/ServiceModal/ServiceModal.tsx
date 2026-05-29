@@ -43,20 +43,58 @@ export default function ServiceModal({ isOpen, onClose, service }: ServiceModalP
     data.travel_date = travelDate;
 
     try {
-      const res = await fetch('/php-backend/api/enquiry.php', {
+      // Attempt to save to database (optional/upcoming backend)
+      await fetch('/php-backend/api/enquiry.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
+      }).catch(err => {
+        console.warn('Database save failed/skipped:', err);
       });
 
-      if (res.ok) {
-        setIsSuccess(true);
-        setTimeout(() => {
-          setIsSuccess(false);
-          setTravelDate('');
-          onClose();
-        }, 3000);
+      // Format details for WhatsApp redirection
+      let msgDetails = `• *Name*: ${data.name || 'N/A'}\n` +
+                       `• *WhatsApp Number*: ${data.phone || 'N/A'}\n`;
+      
+      if (service === 'Railway (IRCTC)') {
+        msgDetails += `• *Service*: Railway Booking\n` +
+                      `• *From - To Station*: ${data.route || 'N/A'}\n` +
+                      `• *Travel Date*: ${formatDateForDisplay(travelDate) || 'N/A'}\n` +
+                      `• *Class*: ${data.class || 'N/A'}\n` +
+                      `• *Number of Passengers*: ${data.pax || '1'}`;
+      } else if (service === 'Hotel Reservations') {
+        msgDetails += `• *Service*: Hotel Reservations\n` +
+                      `• *Destination / Hotel*: ${data.destination || 'N/A'}\n` +
+                      `• *Check-in Date*: ${formatDateForDisplay(travelDate) || 'N/A'}\n` +
+                      `• *Number of Nights*: ${data.nights || '1'}\n` +
+                      `• *Room Category*: ${data.budget || 'Standard / Deluxe'}`;
+      } else if (service === 'Visa Assistance') {
+        msgDetails += `• *Service*: Visa Assistance\n` +
+                      `• *Country for Visa*: ${data.destination || 'N/A'}\n` +
+                      `• *Tentative Travel Date*: ${formatDateForDisplay(travelDate) || 'N/A'}\n` +
+                      `• *Number of Applicants*: ${data.pax || '1'}\n` +
+                      `• *Visa Type*: ${data.visa_type || 'Tourist / Visit'}`;
+      } else {
+        msgDetails += `• *Service*: ${service}\n` +
+                      `• *Desired Destination*: ${data.destination || 'N/A'}\n` +
+                      `• *Travel Month / Date*: ${data.travel_date || travelDate || 'N/A'}\n` +
+                      `• *Number of Travelers*: ${data.pax || '1'}`;
       }
+      
+      if (data.message) {
+        msgDetails += `\n• *Additional Notes*: ${data.message}`;
+      }
+
+      const msg = `Hi Sai Holiday! 🙏\n\nI want to enquire about *${service}*:\n${msgDetails}`;
+      const whatsappUrl = `https://wa.me/919594541724?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappUrl, '_blank');
+
+      setIsSuccess(true);
+      setTimeout(() => {
+        setIsSuccess(false);
+        setTravelDate('');
+        onClose();
+      }, 3000);
     } catch (err) {
       console.error('Submission failed', err);
     } finally {

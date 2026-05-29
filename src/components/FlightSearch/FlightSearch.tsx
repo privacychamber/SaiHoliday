@@ -59,21 +59,54 @@ export default function FlightSearch({ compact = false }: { compact?: boolean })
     e.preventDefault();
     setIsSearching(true);
     
+    const phoneInput = (e.currentTarget as any).querySelector('input[type="tel"]');
+    const phone = phoneInput?.value || '';
+
     const data = {
-      name: (e.currentTarget as any).querySelector('input[type="tel"]')?.value || 'Flight Enquiry',
-      phone: (e.currentTarget as any).querySelector('input[type="tel"]')?.value || '',
+      name: 'Flight Enquiry',
+      phone: phone,
       destination: `${from} to ${to}`,
       travel_date: departure,
       type: 'flight',
-      message: `Trip: ${tripType}, Class: ${cabinClass}, Pax: ${totalPax}`
+      message: `Trip: ${tripType}, Class: ${cabinClass}, Pax: ${totalPax}${returnDate ? `, Return: ${returnDate}` : ''}`
     };
 
     try {
+      // Attempt to save to database (optional/upcoming backend)
       await fetch('/php-backend/api/enquiry.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
+      }).catch(err => {
+        console.warn('Database save failed/skipped:', err);
       });
+
+      // Format details for WhatsApp redirection
+      const msg = `Hi Sai Holiday! 🙏\n\nI want to enquire about a flight booking:\n` +
+        `• *From*: ${from}\n` +
+        `• *To*: ${to}\n` +
+        `• *Trip Type*: ${tripType}\n` +
+        `• *Departure Date*: ${formatDateForDisplay(departure) || 'N/A'}\n` +
+        `${returnDate ? `• *Return Date*: ${formatDateForDisplay(returnDate)}\n` : ''}` +
+        `• *Cabin Class*: ${cabinClass}\n` +
+        `• *Number of Passengers*: ${totalPax}\n` +
+        `• *WhatsApp Number*: ${phone}`;
+      
+      const whatsappUrl = `https://wa.me/919594541724?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappUrl, '_blank');
+
+      alert('✅ Flight enquiry sent successfully! Opening WhatsApp to send details...');
+
+      // Reset form state to clear inputs
+      setFrom('');
+      setTo('');
+      setDeparture('');
+      setReturnDate('');
+      setAdults(1);
+      setChildren(0);
+      setInfants(0);
+      (e.target as HTMLFormElement).reset();
+
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 5000);
     } catch (err) {

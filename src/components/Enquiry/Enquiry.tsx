@@ -94,30 +94,33 @@ export default function Enquiry() {
             };
 
             try {
-              const res = await fetch('/php-backend/api/enquiry.php', {
+              // Attempt to save to database (optional/upcoming backend)
+              await fetch('/php-backend/api/enquiry.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
+              }).catch(err => {
+                console.warn('Database save failed/skipped:', err);
               });
-              if (res.ok) {
-                const msg = `Hi Sai Holiday! 🙏\n\nI want to enquire about a travel package:\n` +
-                  `• *Name*: ${formData.name}\n` +
-                  `• *WhatsApp Number*: ${formData.phone}\n` +
-                  `• *Email*: ${formData.email || 'N/A'}\n` +
-                  `• *Destination Interest*: ${formData.destination}\n` +
-                  `• *Travel Date (approx)*: ${formatDateForDisplay(formData.travel_date) || 'Flexible'}\n` +
-                  `• *Number of Travelers*: ${formData.pax}\n` +
-                  `• *Message / Special Requests*: ${formData.message || 'None'}`;
-                
-                const whatsappUrl = `https://wa.me/919594541724?text=${encodeURIComponent(msg)}`;
-                window.open(whatsappUrl, '_blank');
+              
+              // Proceed with WhatsApp redirection regardless of whether backend is available
+              const msg = `Hi Sai Holiday! 🙏\n\nI want to enquire about a travel package:\n` +
+                `• *Name*: ${formData.name}\n` +
+                `• *WhatsApp Number*: ${formData.phone}\n` +
+                `• *Email*: ${formData.email || 'N/A'}\n` +
+                `• *Destination Interest*: ${formData.destination}\n` +
+                `• *Travel Date (approx)*: ${formatDateForDisplay(formData.travel_date) || 'Flexible'}\n` +
+                `• *Number of Travelers*: ${formData.pax}\n` +
+                `• *Message / Special Requests*: ${formData.message || 'None'}`;
+              
+              const whatsappUrl = `https://wa.me/919594541724?text=${encodeURIComponent(msg)}`;
+              window.open(whatsappUrl, '_blank');
 
-                alert('✅ Enquiry sent successfully! Opening WhatsApp to send details...');
-                setTravelDate('');
-                (e.target as HTMLFormElement).reset();
-              }
+              alert('✅ Enquiry sent successfully! Opening WhatsApp to send details...');
+              setTravelDate('');
+              (e.target as HTMLFormElement).reset();
             } catch (err) {
-              console.error(err);
+              console.error('Enquiry submission error:', err);
             } finally {
               if (btn) btn.disabled = false;
             }
